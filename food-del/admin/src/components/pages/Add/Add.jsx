@@ -4,8 +4,7 @@ import axios from "axios";
 import './Add.css'
 import { toast } from "react-toastify";
 
-const Add = () => {
-    const url = "http://localhost:3000"
+const Add = ({url}) => {
     const [image, setImage] = useState(false);
     const [data, setData] = useState({
         name:"",
@@ -26,6 +25,7 @@ const Add = () => {
         formData.append("price",Number (data.price))
         formData.append("category", data.category)
         formData.append("image", image)
+
         const response = await axios.post(`${url}/api/food/add`, formData);
         if (response.data.success) {
             setData({
@@ -57,7 +57,12 @@ const Add = () => {
                 </div>
                 <div className="add-product-description flex-col">
                     <p>Product description</p>
-                    <textarea onChange={onChangeHandler} value={data.description} name="description" rows="6" placeholder="Write content here" required></textarea>
+                    <textarea
+                        onChange={onChangeHandler}
+                        value={data.description}
+                        name="description" rows="6"
+                        placeholder="Write content here" required>
+                    </textarea>
                 </div>
                 <div className="add-category-price">
                     <div className="add-category flex-col">
