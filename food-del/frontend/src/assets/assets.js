@@ -9,6 +9,8 @@ import twitter_icon from './twitter_icon.png';
 import close_icon from './close_icon.png';
 import app_store from './img-app-store.png';
 import play_store from './img-google-play.png';
+import bag_icon from './bag_icon.png';
+import logout_icon from './log-out_icon.png';
 import menu_1 from './img-08.jpg';
 import menu_2 from './img-09.jpg';
 import menu_3 from './about-4.jpg';
@@ -45,7 +47,9 @@ export const assets ={
     twitter_icon,
     app_store,
     play_store,
-    close_icon
+    close_icon,
+    bag_icon,
+    logout_icon
 }
 export const menu_list = [
     {
