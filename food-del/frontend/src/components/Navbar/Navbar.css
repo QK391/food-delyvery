@@ -55,6 +55,9 @@
 .navbar-profile {
     position: relative;
 }
+.navbar-profile img {
+    width: 30px;
+}
 .nav-profile-dropdown {
     position: absolute;
     display: none;

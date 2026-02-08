@@ -28,9 +28,9 @@ const Navbar = ({setShowLogin}) => {
                     <Link to='/cart'><img src={assets.cartIcon} alt="" style={{height: 25}}/></Link>
                     <div className={getTotalCartAmount()===0?"":"dot"}></div>
                 </div>
-                {!token?<button onClick={()=>setShowLogin(true)}>sign in</button>:
+                {!token?<button onClick={()=>setShowLogin(true)}>Sign in</button>:
                 <div className="navbar-profile">
-                    <img src={assets.profile_icon} alt=""/>
+                    <img src={assets.user_icon} alt=""/>
                     <ul className="nav-profile-dropdown">
                         <li><img src={assets.bag_icon} alt="" />Orders</li>
                         <hr/>

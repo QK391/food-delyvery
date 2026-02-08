@@ -11,6 +11,8 @@ import app_store from './img-app-store.png';
 import play_store from './img-google-play.png';
 import bag_icon from './bag_icon.png';
 import logout_icon from './log-out_icon.png';
+import user_icon from './user_icon.png';
+import exit_icon from './exit_icon.png';
 import menu_1 from './img-08.jpg';
 import menu_2 from './img-09.jpg';
 import menu_3 from './about-4.jpg';
@@ -49,7 +51,9 @@ export const assets ={
     play_store,
     close_icon,
     bag_icon,
-    logout_icon
+    logout_icon,
+    user_icon,
+    exit_icon
 }
 export const menu_list = [
     {
