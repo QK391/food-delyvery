@@ -5,7 +5,7 @@
     background-size: contain;
     position: relative;
 }
-.header-content {
+.header-contents {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -16,17 +16,17 @@
     bottom: 10%;
     animation: fadeIn 3s;
 }
-.header-content h2{
+.header-contents h2{
     font-weight: 500;
     color: rgb(255, 63, 63);
     font-size: max(4.5vw, 22px);
 }
-.header-content p{
+.header-contents p{
     font-size: 1vw;
     color: rgb(255, 63, 63);
     line-height: 1.5;
 }
-.header-content button{
+.header-contents button{
     border: none;
     color: rgb(255, 63, 63);
     font-weight: 500;
@@ -36,20 +36,20 @@
     border-radius: 50px;
 }
 @media (max-width: 1050px) {
-    .header-content {
+    .header-contents {
         max-width: 45%;
         
     }
 }
 @media (max-width: 750px) {
-    .header-content {
+    .header-contents {
         max-width: 55%;
         
     }
-    .header-content p {
+    .header-contents p {
         display: none;
     }
-    .header-content button {
+    .header-contents button {
         padding: 2vw 3.5vw;
     }
 }
