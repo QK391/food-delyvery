@@ -23,6 +23,7 @@
 }
 .navbar-right {
     display: flex;
+    margin-right: 30px;
     gap: 40px;
     align-items: center;
     cursor: pointer;

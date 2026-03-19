@@ -6,6 +6,8 @@ import { StoreContext } from "../../context/StoreContext";
 
 const Navbar = ({setShowLogin}) => {
     const [menu, setMenu] = useState("home");
+    const [showSearch, setShowSearch] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
     const {getTotalCartAmount,token,setToken} = React.useContext(StoreContext);
     const navigate = useNavigate();
     const logout = ()=>{
@@ -13,6 +15,14 @@ const Navbar = ({setShowLogin}) => {
         setToken("");
         navigate("/")
     }
+
+    const handleSearch = () => {
+        if (searchQuery.trim() !== "") {
+            // Điều hướng sang trang chủ hoặc trang tìm kiếm kèm theo query string
+            navigate(`/?search=${searchQuery}`);
+        }
+    }
+
     return ( 
         <div className="navbar">
            <Link><img src={assets.logo} alt="Logo" className="logo" /></Link>
@@ -23,7 +33,19 @@ const Navbar = ({setShowLogin}) => {
                 <a href="#footer" onClick={()=> setMenu("contact us")} className={menu === "contact us" ? "active" : ""}>contact us</a>
             </ul>
             <div className="navbar-right">
-                <img src={assets.searchIcon} alt="" style={{height: 25}}/>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    {showSearch && (
+                        <input 
+                            type="text" 
+                            placeholder="Search..." 
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                            style={{ padding: "5px 10px", borderRadius: "20px", border: "1px solid #ccc", outline: "none" }} 
+                        />
+                    )}
+                    <img src={assets.searchIcon} alt="" onClick={() => setShowSearch(!showSearch)} style={{ height: 25, cursor: "pointer" }} />
+                </div>
                 <div className="navbar-search-icon">
                     <Link to='/cart'><img src={assets.cartIcon} alt="" style={{height: 25}}/></Link>
                     <div className={getTotalCartAmount()===0?"":"dot"}></div>

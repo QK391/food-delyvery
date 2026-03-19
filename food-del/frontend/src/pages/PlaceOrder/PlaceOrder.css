@@ -33,3 +33,22 @@
 .place-order .cart-total button {
     margin-top: 30px;
 }
+@media (max-width: 800px) {
+    .place-order {
+        flex-direction: column;
+    }
+    .place-order-left {
+        max-width: 100%;
+    }
+    .place-order-right {
+        max-width: 100%;
+        margin-top: 40px; /* Thêm khoảng cách giữa 2 cột khi bị thu hẹp */
+    }
+    .place-order-left .multi-fields {
+        flex-direction: column; /* Đặt các ô input thành xếp dọc nếu màn hình quá hẹp */
+        gap: 0;
+    }
+    .place-order .cart-total button {
+        width: 100%;
+    }
+}

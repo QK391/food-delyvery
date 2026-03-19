@@ -25,13 +25,18 @@ const LoginPopup = ({ setShowLogin }) => {
         }else{
             newUrl += "/api/user/register"
         }
-        const response = await axios.post(newUrl,data);
-        if (response.data.success){
-            setToken(response.data.token);
-            localStorage.setItem("token",response.data.token);
-            setShowLogin(false)
-        }else{
-            alert(response.data.message)
+        try {
+            const response = await axios.post(newUrl,data);
+            if (response.data.success){
+                setToken(response.data.token);
+                localStorage.setItem("token",response.data.token);
+                setShowLogin(false)
+            }else{
+                alert(response.data.message)
+            }
+        } catch (error) {
+            console.error("Lỗi khi gọi API đăng nhập/đăng ký:", error);
+            alert("Không thể kết nối đến máy chủ Backend. Vui lòng kiểm tra lại server!");
         }
     }
     return (

@@ -39,8 +39,8 @@ export const PlaceOrder = () => {
         };
         let response = await axios.post(url+"/api/orders", orderData,{headers: {token}});
         if(response.data.success){
-            const {sessiom_url} = response.data;
-            window.location.replace(sessiom_url);
+            const {session_url} = response.data;
+            window.location.replace(session_url);
         }else{
             alert("Error");
         }
@@ -79,7 +79,7 @@ export const PlaceOrder = () => {
                     <div>
                         <div className="cart-total-details">
                             <p>Subtotal</p>
-                            <p>${getTotalCartAmount}</p>
+                            <p>${getTotalCartAmount()}</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
