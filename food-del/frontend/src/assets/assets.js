@@ -14,30 +14,35 @@ import logout_icon from './log-out_icon.png';
 import user_icon from './user_icon.png';
 import exit_icon from './exit_icon.png';
 import box_icon from './box_icon.png';
-import menu_1 from './img-08.jpg';
-import menu_2 from './img-09.jpg';
-import menu_3 from './about-4.jpg';
-import menu_4 from './o1.jpg';
-import menu_5 from './img-10.jpg';
-import menu_6 from './img-11.jpg';
-import menu_7 from './img-13.jpg';
-import menu_8 from './img-06.jpg';
-import food_1 from './food_1.png';
-import food_2 from './food_2.png';
-import food_3 from './food_3.png';
-import food_4 from './food_4.png';
-import food_5 from './food_5.png';
-import food_6 from './food_6.png';
-import food_7 from './food_7.png';
-import food_8 from './food_8.png';
-import food_9 from './food_9.png';
-import food_10 from './food_10.png';
-import food_11 from './food_11.png';
-import food_12 from './food_12.png';
-import food_13 from './food_13.png';
-import food_14 from './food_14.png';
-import food_15 from './food_15.png';
-import food_16 from './food_16.png';
+import menu_1 from './sl_03.jpg';
+import menu_2 from './meat_03.png';
+import menu_3 from './pz_05.png';
+import menu_4 from './cake_04.png';
+import menu_5 from './noodle_02.png';
+import menu_6 from './dr_01.jpg';
+import menu_7 from './soup_01.png';
+import food_1 from './sl_01.jpg';
+import food_2 from './sl_04.jpg';
+import food_3 from './pz_03.jpg';
+import food_4 from './cake_02.jpg';
+import food_5 from './cake_03.jpg';
+import food_6 from './dr_02.jpg';
+import food_7 from './noodle_02.png';
+import food_8 from './sl_03.jpg';
+import food_9 from './meat_01.jpg';
+import food_10 from './dr_03.jpg';
+import food_11 from './pz_04.jpg';
+import food_12 from './soup_02.png';
+import food_13 from './cake_04.png';
+import food_14 from './soup_03.png';
+import food_15 from './cake_05.png';
+import food_16 from './meat_02.jpg';
+import food_17 from './meat_04.png';
+import food_18 from './noodle_05.png';
+import food_19 from './pz_05.png';
+import food_20 from './noodle_06.png';
+import food_21 from './dr_05.jpg';
+import food_22 from './soup_04.png';
 
 export const assets ={
     logo,
@@ -63,32 +68,28 @@ export const menu_list = [
         menu_image: menu_1
     },
     {
-        menu_name: "Rolls",
+        menu_name: "Meat",
         menu_image: menu_2
     },
     {
-        menu_name: "Deserts",
+        menu_name: "Pizza",
         menu_image: menu_3
     },
     {
-        menu_name: "Sandwich",
+        menu_name: "Cake",
         menu_image: menu_4
     },
     {
-        menu_name: "Cake",
+        menu_name: "Noodles",
         menu_image: menu_5
     },
     {
-        menu_name: "Pure Veg",
+        menu_name: "Drink",
         menu_image: menu_6
     },
     {
-        menu_name: "Pasta",
+        menu_name: "Soup",
         menu_image: menu_7
-    },
-    {
-        menu_name: "Noodles",
-        menu_image: menu_8
     }
 
 ]
@@ -115,7 +116,7 @@ export const food_list = [
         image: food_3,
         price: 15,
         description: "A refreshing mix of seasonal fruits with a hint of mint.",
-        category: "Deserts"
+        category: "Pizza"
     },
     {
         _id: "4",
@@ -123,7 +124,7 @@ export const food_list = [
         image: food_4,
         price: 18,
         description: "Grilled chicken with fresh vegetables and a zesty dressing.",
-        category: "Sandwich"
+        category: "Cake"
     },
     {
         _id: "5",
@@ -139,7 +140,7 @@ export const food_list = [
         image: food_6,
         price: 17,
         description: "A hearty salad with tuna, mixed greens, and a light vinaigrette.",
-        category: "Sandwich"
+        category: "Drink"
     },
     {
         _id: "7",
@@ -162,14 +163,14 @@ export const food_list = [
         image: food_9,
         price: 10,
         description: "Crispy rolls filled with fresh vegetables and served with a tangy dipping sauce.",
-        category: "Rolls"
+        category: "Meat"
     },
     {   _id: "10",
         name: "Chicken Rolls",
         image: food_10,
         price: 12,
         description: "Delicious rolls stuffed with seasoned chicken and vegetables.",
-        category: "Pasta"
+        category: "Drink"
     },
     {
         _id: "11",
@@ -177,14 +178,14 @@ export const food_list = [
         image: food_11,
         price: 9,
         description: "Fresh vegetable rolls served with a sweet chili sauce.",
-        category: "Pasta"
+        category: "Pizza"
     },
     {   _id: "12",
         name: "Shrimp Rolls",
         image: food_12,
         price: 14,
         description: "Tasty rolls filled with shrimp and crunchy vegetables.",
-        category: "Pure Veg"
+        category: "Soup"
     },
     {
         _id: "13",
@@ -192,7 +193,7 @@ export const food_list = [
         image: food_13,
         price: 11,
         description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
-        category: "Rolls"
+        category: "Cake"
     },
     {
         _id: "14",
@@ -200,7 +201,7 @@ export const food_list = [
         image: food_14,
         price: 15,
         description: "Juicy beef rolls with a blend of spices and served with a side of dipping sauce.",
-        category: "Pure Veg"
+        category: "Soup"
     },
     {
         _id: "15",
@@ -210,11 +211,60 @@ export const food_list = [
         description: "Healthy tofu rolls with fresh vegetables and a tangy dipping sauce.",
         category: "Cake"
     },
-    {   _id: "16",
+    {  
+         _id: "16",
         name: "Avocado Rolls",
         image: food_16,
         price: 12,
         description: "Creamy avocado rolls with fresh vegetables and a zesty dressing.",
-        category: "Deserts"
+        category: "Meat"
+    },
+    {
+        _id: "17",
+        name: "Thịt áp chảo",
+        image: food_17,
+        price: 12,
+        description: "Healthy tofu rolls with fresh vegetables and a tangy dipping sauce.",
+        category: "Meat"
+    },
+    {
+        _id: "18",
+        name: "Mỳ xào",
+        image: food_18,
+        price: 10,
+        description: "Juicy beef rolls with a blend of spices and served with a side of dipping sauce.",
+        category: "Noodles"
+    },
+    {
+        _id: "19",
+        name: "Pizza ma",
+        image: food_19,
+        print: 15,
+        description: "Healthy tofu rolls with fresh vegetables and a tangy dipping sauce.",
+        category: "Pizza"
+    },
+    {
+        _id: "20",
+        name: "Noodle",
+        image: food_20,
+        print: 17,
+        description: "Tasty rolls filled with shrimp and crunchy vegetables.",
+        category: "Noodles"
+    },
+    {
+        _id: "21",
+        name: "Drink",
+        image: food_21,
+        print: 16,
+        description: "Fresh vegetable rolls served with a sweet chili sauce.",
+        category: "Drink"
+    },
+    {
+        _id: "22",
+        name: "Soup",
+        image: food_22,
+        print: 12,
+        description: "Tasty rolls filled with shrimp and crunchy vegetables.",
+        category: "Soup"
     }
 ]
