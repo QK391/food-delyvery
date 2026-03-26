@@ -53,7 +53,7 @@ const Add = ({url}) => {
                 </div>
                 <div className="add-product-name flex-col">
                     <p>Tên món ăn</p>
-                    <input onChange={onChangeHandler} value={data.name} type="text" name="name" placeholder="Type here"/>
+                    <input onChange={onChangeHandler} value={data.name} type="text" name="name" placeholder="Tên món ăn"/>
                 </div>
                 <div className="add-product-description flex-col">
                     <p>Mô tả món ăn</p>
@@ -61,7 +61,7 @@ const Add = ({url}) => {
                         onChange={onChangeHandler}
                         value={data.description}
                         name="description" rows="6"
-                        placeholder="Write content here" required>
+                        placeholder="Mô tả món ăn" required>
                     </textarea>
                 </div>
                 <div className="add-category-price">
@@ -69,13 +69,12 @@ const Add = ({url}) => {
                         <p>Danh mục</p>
                         <select onChange={onChangeHandler} name="category" id="">
                             <option value="Salad">Salad</option>
-                            <option value="Món cuốn">Món cuốn</option>
-                            <option value="Món tráng miệng">Deserts</option>
-                            <option value="Sandwich">Sandwich</option>
-                            <option value="Bánh ngọt">Bánh ngọt</option>
-                            <option value="Món rau">Món rau</option>
-                            <option value="Súp">Súp</option>
-                            <option value="Mì">Mì</option>
+                            <option value="Món cuốn">Meat</option>
+                            <option value="Món tráng miệng">Pizza</option>
+                            <option value="Sandwich">Cake</option>
+                            <option value="Bánh ngọt">Noodles</option>
+                            <option value="Món rau">Drink</option>
+                            <option value="Súp">Soup</option>
                         </select>
                     </div>
                     <div className="add-price flex-col">

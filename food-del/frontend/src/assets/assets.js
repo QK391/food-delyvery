@@ -23,20 +23,19 @@ import menu_6 from './dr_01.jpg';
 import menu_7 from './soup_01.png';
 import food_1 from './sl_01.jpg';
 import food_2 from './sl_04.jpg';
-import food_3 from './pz_03.jpg';
-import food_4 from './cake_02.jpg';
-import food_5 from './cake_03.jpg';
+import food_3 from './pz_10.jpg';
+import food_5 from './cake_07.png';
 import food_6 from './dr_02.jpg';
 import food_7 from './noodle_02.png';
 import food_8 from './sl_03.jpg';
 import food_9 from './meat_01.jpg';
-import food_10 from './dr_03.jpg';
+import food_10 from './dr_07.jpg';
 import food_11 from './pz_04.jpg';
 import food_12 from './soup_02.png';
-import food_13 from './cake_04.png';
+import food_13 from './cake_06.png';
 import food_14 from './soup_03.png';
 import food_15 from './cake_05.png';
-import food_16 from './meat_02.jpg';
+import food_16 from './meat_05.jpg';
 import food_17 from './meat_04.png';
 import food_18 from './noodle_05.png';
 import food_19 from './pz_05.png';
@@ -118,14 +117,7 @@ export const food_list = [
         description: "A refreshing mix of seasonal fruits with a hint of mint.",
         category: "Pizza"
     },
-    {
-        _id: "4",
-        name: "Chicken salad",
-        image: food_4,
-        price: 18,
-        description: "Grilled chicken with fresh vegetables and a zesty dressing.",
-        category: "Cake"
-    },
+   
     {
         _id: "5",
         name: "Caesar salad",

@@ -56,7 +56,7 @@ export const PlaceOrder = () => {
     return (
         <form onSubmit={placeOrder} className="place-order">
             <div className="place-order-left">
-                <p className="title">Delivery Information</p>
+                <p className="title">Thông tin giao hàng</p>
                 <div className="multi-fields">
                     <input required name="firstName" onChange={onChangeHandler} value={data.firstName} type="text" placeholder="First name"/>
                     <input required name="lastName" onChange={onChangeHandler} value={data.lastName} type="text" placeholder="Last name"/>
@@ -75,24 +75,24 @@ export const PlaceOrder = () => {
             </div>
             <div className="place-order-right">
                   <div className="cart-total">
-                    <h2>Cart Totals</h2>
+                    <h2>Giỏ hàng</h2>
                     <div>
                         <div className="cart-total-details">
-                            <p>Subtotal</p>
+                            <p>Thành tiền</p>
                             <p>${getTotalCartAmount()}</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
-                            <p>Delivery Free</p>
+                            <p>Phí giao hàng</p>
                             <p>${getTotalCartAmount()===0?0:2}</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
-                            <b>Total</b>
+                            <b>Tổng</b>
                             <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
                         </div>
                     </div>
-                    <button type="submit">PROCEED TO PAYMENT</button>
+                    <button type="submit">THANH TOÁN</button>
                 </div>
             </div>
 

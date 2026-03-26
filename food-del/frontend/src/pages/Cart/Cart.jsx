@@ -10,12 +10,12 @@ const Cart = () => {
         <div className="cart">
             <div className="cart-items">
                 <div className="cart-items-title">
-                    <p>Item</p>
-                    <p>Title</p>
-                    <p>Price</p>
-                    <p>Quantity</p>
-                    <p>Total</p>
-                    <p>Remove</p>
+                    <p>Ảnh</p>
+                    <p>Tên món</p>
+                    <p>Giá tiền</p>
+                    <p>Số lượng</p>
+                    <p>Tổng</p>
+                    <p>Xóa</p>
                 </div>
                 <br />
                 <hr />
@@ -40,20 +40,20 @@ const Cart = () => {
             </div>
             <div className="cart-bottom">
                 <div className="cart-total">
-                    <h2>Cart Totals</h2>
+                    <h2>Giỏ hàng</h2>
                     <div>
                         <div className="cart-total-details">
-                            <p>Subtotal</p>
+                            <p>Giá tiền</p>
                             <p>${getTotalCartAmount()}</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
-                            <p>Delivery Free</p>
+                            <p>Phí giao hàng</p>
                             <p>${getTotalCartAmount()===0?0:2}</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
-                            <b>Total</b>
+                            <b>Tổng</b>
                             <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
                         </div>
                     </div>

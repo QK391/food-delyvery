@@ -2,7 +2,7 @@
     width: 70%;
     margin-left: max(5vw,25px);
     margin-top: 50px;
-    color: rgb(164, 164, 165);
+    color: rgb(7, 7, 7);
     font-size: 16px;
 }
 .add form {
@@ -27,6 +27,7 @@
     padding: 8px;
 }
 .add-btn {
-    max-width: 120px;
+    height: 30px;
+    max-width: 150px;
     cursor: pointer;
 }
