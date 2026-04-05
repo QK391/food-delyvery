@@ -7,7 +7,7 @@ const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const url = "http://localhost:3050"
     const [token,setToken] = useState("");
-    const [foodlist,setFoodList] = useState([food_list]);
+    const [foodlist, setFoodList] = useState(food_list);
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
             setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
@@ -27,23 +27,38 @@ const StoreContextProvider = (props) => {
     }
     const getTotalCartAmount = () => {
         let totalAmount = 0;
-        for(const item in cartItems)
-        {
-            if(cartItems[item]>0){
-                let itemInfo = food_list.find((product)=>product._id===item);
-                totalAmount += itemInfo.price* cartItems[item];
+        for (const item in cartItems) {
+            if (cartItems[item] > 0) {
+                const itemInfo = foodlist.find(
+                    (product) => String(product._id) === String(item)
+                );
+                if (itemInfo) totalAmount += itemInfo.price * cartItems[item];
             }
         }
         return totalAmount;
-    }
+    };
     const fetchFoodList = async () => {
-        const response = await axios.get(url+"/api/food/list");
-        setFoodList(response.data.data)
-    }
+        try {
+            const response = await axios.get(url + "/api/food/list");
+            const data = response.data?.data;
+            if (response.data?.success && Array.isArray(data) && data.length > 0) {
+                setFoodList(data);
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    };
     const loadCarData = async (token) => {
-        const response = await axios.post(url+"/api/cart/get",{},{headers: {token}});
-        setCartItems(response.data.cartData);
-    }
+        const response = await axios.get(url + "/api/cart/get", {
+            headers: { token },
+        });
+        const raw = response.data?.cartData;
+        setCartItems(
+            raw != null && typeof raw === "object" && !Array.isArray(raw)
+                ? { ...raw }
+                : {}
+        );
+    };
     useEffect(()=>{
         async function loadData(){
             await fetchFoodList();
@@ -59,7 +74,7 @@ const StoreContextProvider = (props) => {
         url,
         token,
         setToken,
-        food_list,
+        food_list: foodlist,
         cartItems,
         setCartItems,
         addToCart,

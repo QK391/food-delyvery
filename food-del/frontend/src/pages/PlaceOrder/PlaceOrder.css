@@ -26,6 +26,35 @@
     display: flex;
     gap: 10px;
 }
+.place-order-section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 28px 0 12px;
+}
+.place-order-payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+.place-order-payment-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.place-order-payment-option input {
+    width: auto;
+    margin: 0;
+    accent-color: rgb(255, 63, 63);
+}
+.place-order-payment-hint {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.45;
+    margin: 0 0 8px;
+}
 .place-order-right {
     width: 100%;
     max-width: max(40%, 500px);

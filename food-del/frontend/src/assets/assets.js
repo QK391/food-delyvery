@@ -95,15 +95,15 @@ export const menu_list = [
 export const food_list = [
     {
         _id: "1",
-        name: "Greek salad",
+        name: "Salad rau mầm hoa edible flower",
         image: food_1,
         price: 12,
-        description: "Food provides essential nutrients that are necessary for growth, repair, and overall health.",
+        description: "Salad rau mầm hoa edible flower",
         category: "Salad"
     },
     {
         _id: "2",
-        name: "Veg salad",
+        name: "Salad trái cây trộn rau xà lách",
         image: food_2,
         price: 14,
         description: "Fresh vegetables and herbs combined with a tangy dressing.",
@@ -111,7 +111,7 @@ export const food_list = [
     },
     {
         _id: "3",
-        name: "Fruit salad",
+        name: "Pizza cà chua phô mai",
         image: food_3,
         price: 15,
         description: "A refreshing mix of seasonal fruits with a hint of mint.",
@@ -120,7 +120,7 @@ export const food_list = [
    
     {
         _id: "5",
-        name: "Caesar salad",
+        name: "hamburger thịt bò kèm",
         image: food_5,
         price: 16,
         description: "Crisp romaine lettuce with Caesar dressing, croutons, and Parmesan cheese.",
@@ -128,7 +128,7 @@ export const food_list = [
     },
     {
         _id: "6",
-        name: "Tuna salad",
+        name: "Nước dưa hấu ép",
         image: food_6,
         price: 17,
         description: "A hearty salad with tuna, mixed greens, and a light vinaigrette.",
@@ -136,14 +136,14 @@ export const food_list = [
     },
     {
         _id: "7",
-        name: "Pasta salad",
+        name: "Mì xào",
         image: food_7,
         price: 13,
         description: "A colorful mix of pasta, vegetables, and Italian dressing.",
         category: "Noodles"
     },
     {   _id: "8",
-        name: "Quinoa salad",
+        name: "Salad bốn mùa",
         image: food_8,
         price: 19,
         description: "Nutritious quinoa combined with fresh veggies and a lemon dressing.",
@@ -151,14 +151,14 @@ export const food_list = [
     },
     {
         _id: "9",
-        name: "Spring Rolls",
+        name: "Ức vịt áp chảo",
         image: food_9,
         price: 10,
         description: "Crispy rolls filled with fresh vegetables and served with a tangy dipping sauce.",
         category: "Meat"
     },
     {   _id: "10",
-        name: "Chicken Rolls",
+        name: "Mango drink",
         image: food_10,
         price: 12,
         description: "Delicious rolls stuffed with seasoned chicken and vegetables.",
@@ -166,14 +166,14 @@ export const food_list = [
     },
     {
         _id: "11",
-        name: "Veggie Rolls",
+        name: "Veggie Pizza",
         image: food_11,
         price: 9,
         description: "Fresh vegetable rolls served with a sweet chili sauce.",
         category: "Pizza"
     },
     {   _id: "12",
-        name: "Shrimp Rolls",
+        name: "Shrimp Soup",
         image: food_12,
         price: 14,
         description: "Tasty rolls filled with shrimp and crunchy vegetables.",
@@ -181,7 +181,7 @@ export const food_list = [
     },
     {
         _id: "13",
-        name: "Cheese Rolls",
+        name: "Bánh pancake",
         image: food_13,
         price: 11,
         description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
@@ -189,7 +189,7 @@ export const food_list = [
     },
     {
         _id: "14",
-        name: "Beef Rolls",
+        name: "Beef Soup",
         image: food_14,
         price: 15,
         description: "Juicy beef rolls with a blend of spices and served with a side of dipping sauce.",
@@ -197,7 +197,7 @@ export const food_list = [
     },
     {
         _id: "15",
-        name: "Tofu Rolls",
+        name: "Bánh mì pate",
         image: food_15,
         price: 10,
         description: "Healthy tofu rolls with fresh vegetables and a tangy dipping sauce.",
@@ -205,7 +205,7 @@ export const food_list = [
     },
     {  
          _id: "16",
-        name: "Avocado Rolls",
+        name: "Sườn nướng",
         image: food_16,
         price: 12,
         description: "Creamy avocado rolls with fresh vegetables and a zesty dressing.",
@@ -221,7 +221,7 @@ export const food_list = [
     },
     {
         _id: "18",
-        name: "Mỳ xào",
+        name: "Mỳ xoắn",
         image: food_18,
         price: 10,
         description: "Juicy beef rolls with a blend of spices and served with a side of dipping sauce.",
@@ -237,7 +237,7 @@ export const food_list = [
     },
     {
         _id: "20",
-        name: "Noodle",
+        name: "Mì Ý sốt kem gà nấm",
         image: food_20,
         print: 17,
         description: "Tasty rolls filled with shrimp and crunchy vegetables.",

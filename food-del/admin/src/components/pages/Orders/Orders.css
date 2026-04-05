@@ -1,6 +1,6 @@
 .order-item{
     display: grid;
-    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
     align-items: start;
     gap: 30px;
     border: 1px solid #ccc;
@@ -29,7 +29,7 @@
 @media (max-width:1000px){
     .order-item{
         font-size: 12px;
-        grid-template-columns:0.5fr 2fr 1fr;
+        grid-template-columns: 0.5fr 2fr 1fr;
         padding: 15px 8px;
     }
     .order-item select{

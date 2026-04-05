@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
 
 const Navbar = ({setShowLogin}) => {
@@ -10,6 +10,12 @@ const Navbar = ({setShowLogin}) => {
     const [searchQuery, setSearchQuery] = useState("");
     const {getTotalCartAmount,token,setToken} = React.useContext(StoreContext);
     const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        setSearchQuery(params.get("search") || "");
+    }, [location.search]);
     const logout = ()=>{
         localStorage.removeItem("token");
         setToken("");
@@ -17,11 +23,26 @@ const Navbar = ({setShowLogin}) => {
     }
 
     const handleSearch = () => {
-        if (searchQuery.trim() !== "") {
-            // Điều hướng sang trang chủ hoặc trang tìm kiếm kèm theo query string
-            navigate(`/?search=${searchQuery}`);
+        const trimmedQuery = searchQuery.trim();
+        if (!trimmedQuery) {
+            navigate("/", { replace: true });
+            return;
         }
-    }
+        navigate(`/?search=${encodeURIComponent(trimmedQuery)}`, {
+            replace: true,
+        });
+    };
+
+    const onSearchInputChange = (e) => {
+        const v = e.target.value;
+        setSearchQuery(v);
+        const t = v.trim();
+        if (t) {
+            navigate(`/?search=${encodeURIComponent(t)}`, { replace: true });
+        } else {
+            navigate("/", { replace: true });
+        }
+    };
 
     return ( 
         <div className="navbar">
@@ -39,7 +60,7 @@ const Navbar = ({setShowLogin}) => {
                             type="text" 
                             placeholder="Search..." 
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={onSearchInputChange}
                             onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                             style={{ padding: "5px 10px", borderRadius: "20px", border: "1px solid #ccc", outline: "none" }} 
                         />

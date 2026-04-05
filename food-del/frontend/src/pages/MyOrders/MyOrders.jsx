@@ -33,14 +33,24 @@ const MyOrders = () => {
                                 </p>
                                 <p>${order.amount}.00</p>
                                 <p>Items: {order.items.length}</p>
-                                <p><span>&#x25cf;</span><b>{order.status}</b></p>
+                                <div className="my-orders-status-block">
+                                    <p><span>&#x25cf;</span><b>{order.status}</b></p>
+                                    <p className="my-orders-payment">
+                                        {order.paymentMethod === "bank_card"
+                                            ? "Thẻ ngân hàng"
+                                            : "Tiền mặt (COD)"}
+                                        {" — "}
+                                        {order.payment
+                                            ? "Đã thanh toán"
+                                            : "Chưa thanh toán"}
+                                    </p>
+                                </div>
                                 <button onClick={fetchOrders}>Track Order</button>
                             </div>
                         )
                     })}
                 </div>
             </h2>
-
         </div>
     );
 };

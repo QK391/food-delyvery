@@ -28,6 +28,16 @@
     font-weight: 500;
     color: thistle;
 }
+.my-orders-status-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.my-orders-payment {
+    font-size: 12px;
+    color: #ccc;
+    margin: 0;
+}
 .my-orders-order button{
     border: none;
     padding: 12px 0px;

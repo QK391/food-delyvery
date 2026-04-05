@@ -16,12 +16,14 @@ export const PlaceOrder = () => {
         zipCode: "",
         country: "",
         phone: "",
-    })
+    });
+    const [paymentMethod, setPaymentMethod] = React.useState("cash");
     const onChangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setData((data) => ({...data, [name]: value}))
     }
+    const navigate = useNavigate();
     const placeOrder = async(event) => {
         event.preventDefault();
         let orderItems = [];
@@ -36,16 +38,15 @@ export const PlaceOrder = () => {
             address: data,
             items: orderItems,
             amount: getTotalCartAmount()+2,
+            paymentMethod,
         };
-        let response = await axios.post(url+"/api/orders", orderData,{headers: {token}});
+        let response = await axios.post(url+"/api/order/place", orderData,{headers: {token}});
         if(response.data.success){
-            const {session_url} = response.data;
-            window.location.replace(session_url);
+            navigate("/myorders");
         }else{
-            alert("Error");
+            alert(response.data.message || "Không thể đặt hàng");
         }
     }
-    const navigate = useNavigate();
     useEffect(() => {
         if(!token){
             navigate("/cart");
@@ -72,6 +73,34 @@ export const PlaceOrder = () => {
                     <input required name="country" onChange={onChangeHandler} value={data.country} type="text" placeholder="Country"/>
                 </div>
                 <input name="phone" onChange={onChangeHandler} value={data.phone} type="text" placeholder="Phone"/>
+                <p className="place-order-section-title">Phương thức thanh toán</p>
+                <div className="place-order-payment-options">
+                    <label className="place-order-payment-option">
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="cash"
+                            checked={paymentMethod === "cash"}
+                            onChange={() => setPaymentMethod("cash")}
+                        />
+                        <span>Tiền mặt khi nhận hàng (COD)</span>
+                    </label>
+                    <label className="place-order-payment-option">
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="bank_card"
+                            checked={paymentMethod === "bank_card"}
+                            onChange={() => setPaymentMethod("bank_card")}
+                        />
+                        <span>Thẻ ngân hàng</span>
+                    </label>
+                </div>
+                {paymentMethod === "bank_card" && (
+                    <p className="place-order-payment-hint">
+                        Đơn hàng được ghi nhận như đã thanh toán qua thẻ (demo — chưa kết nối cổng thanh toán thật).
+                    </p>
+                )}
             </div>
             <div className="place-order-right">
                   <div className="cart-total">
@@ -92,7 +121,7 @@ export const PlaceOrder = () => {
                             <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
                         </div>
                     </div>
-                    <button type="submit">THANH TOÁN</button>
+                    <button type="submit">Đặt hàng</button>
                 </div>
             </div>
 
