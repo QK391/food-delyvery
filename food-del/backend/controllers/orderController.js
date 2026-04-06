@@ -3,8 +3,9 @@ import userModel from "../models/userModel.js";
 
 const placeOrder = async (req, res) => {
   try {
-    const paymentMethod =
-      req.body.paymentMethod === "bank_card" ? "bank_card" : "cash";
+    const paymentMethod = ["bank_card", "e_wallet"].includes(req.body.paymentMethod)
+      ? req.body.paymentMethod
+      : "cash";
     const paid = paymentMethod === "bank_card";
 
     const newOrder = new orderModel({
@@ -56,4 +57,20 @@ const updateOrderStatus = async (req, res) => {
   }
 };
 
-export { placeOrder, userOrders, listOrders, updateOrderStatus };
+const verifyOrder = async (req, res) => {
+  const { orderId, success } = req.body;
+  try {
+    if (success === "true" || success === true) {
+      await orderModel.findByIdAndUpdate(orderId, { payment: true });
+      res.json({ success: true, message: "Paid" });
+    } else {
+      await orderModel.findByIdAndDelete(orderId);
+      res.json({ success: false, message: "Not Paid" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error" });
+  }
+};
+
+export { placeOrder, userOrders, listOrders, updateOrderStatus, verifyOrder };

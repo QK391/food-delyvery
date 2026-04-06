@@ -38,6 +38,8 @@ const MyOrders = () => {
                                     <p className="my-orders-payment">
                                         {order.paymentMethod === "bank_card"
                                             ? "Thẻ ngân hàng"
+                                            : order.paymentMethod === "e_wallet"
+                                            ? "Ví điện tử"
                                             : "Tiền mặt (COD)"}
                                         {" — "}
                                         {order.payment

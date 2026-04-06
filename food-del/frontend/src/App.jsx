@@ -7,6 +7,7 @@ import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
 import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import MyOrders from "./pages/MyOrders/MyOrders";
+import VnpayMock from "./pages/VnpayMock/VnpayMock";
 
 const App = () => {
   const [showLogin, setShowLogin] = React.useState(false);
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/cart" element={<Cart/>} />
         <Route path="/order" element={<PlaceOrder/>} />
         <Route path="/myorders" element={<MyOrders/>} />
+        <Route path="/vnpay-mock" element={<VnpayMock/>} />
       </Routes>
     </div>
     <Footer />

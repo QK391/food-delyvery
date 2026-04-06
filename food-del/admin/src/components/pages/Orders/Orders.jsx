@@ -60,6 +60,8 @@ const Orders = ({url}) => {
                         <p>
                             {order.paymentMethod === "bank_card"
                                 ? "Thẻ"
+                                : order.paymentMethod === "e_wallet"
+                                ? "Ví điện tử"
                                 : "COD"}
                             {order.payment ? " · Đã TT" : " · Chưa TT"}
                         </p>
