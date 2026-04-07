@@ -57,14 +57,14 @@ const Cart = () => {
                             <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
                         </div>
                     </div>
-                    <button onClick={()=>navigate('/order')}>THANH TOÁN</button>
+                    <button onClick={()=>navigate('/order')}>Tiến hành thanh toán</button>
                 </div>
                 <div className="cart-promocode">
                     <div>
                         <p>Nhập mã khuyến mãi để được giảm giá.</p>
                         <div className="cart-promocode-input">
                             <input type="text" placeholder="Mã giảm giá"/>
-                            <button>Submit</button>
+                            <button>Áp dụng</button>
                         </div>
                     </div>
                 </div>

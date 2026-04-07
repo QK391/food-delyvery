@@ -42,7 +42,7 @@ export const PlaceOrder = () => {
             const {session_url} = response.data;
             window.location.replace(session_url);
         }else{
-            alert("Error");
+            alert("Có lỗi xảy ra");
         }
     }
     const navigate = useNavigate();
@@ -58,20 +58,20 @@ export const PlaceOrder = () => {
             <div className="place-order-left">
                 <p className="title">Thông tin giao hàng</p>
                 <div className="multi-fields">
-                    <input required name="firstName" onChange={onChangeHandler} value={data.firstName} type="text" placeholder="First name"/>
-                    <input required name="lastName" onChange={onChangeHandler} value={data.lastName} type="text" placeholder="Last name"/>
+                    <input required name="firstName" onChange={onChangeHandler} value={data.firstName} type="text" placeholder="Tên"/>
+                    <input required name="lastName" onChange={onChangeHandler} value={data.lastName} type="text" placeholder="Họ"/>
                 </div>
-                <input required name="email" onChange={onChangeHandler} value={data.email} type="email" placeholder="Email address"/>
-                <input required name="street" onChange={onChangeHandler} value={data.street} type="text" placeholder="Street"/>
+                <input required name="email" onChange={onChangeHandler} value={data.email} type="email" placeholder="Địa chỉ email"/>
+                <input required name="street" onChange={onChangeHandler} value={data.street} type="text" placeholder="Địa chỉ"/>
                 <div className="multi-fields">
-                    <input required name="city" onChange={onChangeHandler} value={data.city} type="text" placeholder="City"/>
-                    <input required name="state" onChange={onChangeHandler} value={data.state} type="text" placeholder="State"/>
+                    <input required name="city" onChange={onChangeHandler} value={data.city} type="text" placeholder="Thành phố"/>
+                    <input required name="state" onChange={onChangeHandler} value={data.state} type="text" placeholder="Tỉnh/Thành"/>
                 </div>
                  <div className="multi-fields">
-                    <input required name="zipCode" onChange={onChangeHandler} value={data.zipCode} type="text" placeholder="Zip code"/>
-                    <input required name="country" onChange={onChangeHandler} value={data.country} type="text" placeholder="Country"/>
+                    <input required name="zipCode" onChange={onChangeHandler} value={data.zipCode} type="text" placeholder="Mã bưu điện"/>
+                    <input required name="country" onChange={onChangeHandler} value={data.country} type="text" placeholder="Quốc gia"/>
                 </div>
-                <input name="phone" onChange={onChangeHandler} value={data.phone} type="text" placeholder="Phone"/>
+                <input name="phone" onChange={onChangeHandler} value={data.phone} type="text" placeholder="Số điện thoại"/>
             </div>
             <div className="place-order-right">
                   <div className="cart-total">
@@ -92,7 +92,7 @@ export const PlaceOrder = () => {
                             <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
                         </div>
                     </div>
-                    <button type="submit">THANH TOÁN</button>
+                    <button type="submit">Thanh toán</button>
                 </div>
             </div>
 
