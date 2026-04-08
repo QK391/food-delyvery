@@ -42,7 +42,10 @@ const StoreContextProvider = (props) => {
             const response = await axios.get(url + "/api/food/list");
             const data = response.data?.data;
             if (response.data?.success && Array.isArray(data) && data.length > 0) {
-                setFoodList(data);
+                setFoodList(prev => {
+                    const newItems = data.filter(d => !prev.some(p => p._id === d._id));
+                    return [...prev, ...newItems];
+                });
             }
         } catch (e) {
             console.error(e);

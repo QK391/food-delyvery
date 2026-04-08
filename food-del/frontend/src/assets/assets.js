@@ -42,8 +42,14 @@ import food_19 from './pz_05.png';
 import food_20 from './noodle_06.png';
 import food_21 from './dr_05.jpg';
 import food_22 from './soup_04.png';
+import food_23 from './cake_08.png';
+import food_24 from './cake_10.png';
+import food_25 from './dr_08.jpg';
+import food_26 from './dr_09.jpg';
+import food_27 from './noodle_04.png';
+import food_28 from './sl_11.png';
 
-export const assets ={
+export const assets = {
     logo,
     searchIcon,
     cartIcon,
@@ -124,7 +130,7 @@ export const food_list = [
         description: "A refreshing mix of seasonal fruits with a hint of mint.",
         category: "Pizza"
     },
-   
+
     {
         _id: "5",
         name: "hamburger thịt bò kèm",
@@ -149,7 +155,8 @@ export const food_list = [
         description: "A colorful mix of pasta, vegetables, and Italian dressing.",
         category: "Noodles"
     },
-    {   _id: "8",
+    {
+        _id: "8",
         name: "Salad bốn mùa",
         image: food_8,
         price: 19,
@@ -164,7 +171,8 @@ export const food_list = [
         description: "Crispy rolls filled with fresh vegetables and served with a tangy dipping sauce.",
         category: "Meat"
     },
-    {   _id: "10",
+    {
+        _id: "10",
         name: "Mango drink",
         image: food_10,
         price: 12,
@@ -179,7 +187,8 @@ export const food_list = [
         description: "Fresh vegetable rolls served with a sweet chili sauce.",
         category: "Pizza"
     },
-    {   _id: "12",
+    {
+        _id: "12",
         name: "Shrimp Soup",
         image: food_12,
         price: 14,
@@ -210,8 +219,8 @@ export const food_list = [
         description: "Healthy tofu rolls with fresh vegetables and a tangy dipping sauce.",
         category: "Cake"
     },
-    {  
-         _id: "16",
+    {
+        _id: "16",
         name: "Sườn nướng",
         image: food_16,
         price: 12,
@@ -265,5 +274,53 @@ export const food_list = [
         print: 12,
         description: "Tasty rolls filled with shrimp and crunchy vegetables.",
         category: "Soup"
+    },
+    {
+        _id: "23",
+        name: "Bánh kem",
+        image: food_23,
+        print: 18,
+        description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
+        category: "Cake"
+    },
+    {
+        _id: "24",
+        name: "Bánh kem",
+        image: food_24,
+        print: 18,
+        description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
+        category: "Cake"
+    },
+    {
+        _id: "25",
+        name: "Trà mật ong",
+        image: food_25,
+        print: 18,
+        description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
+        category: "Drink"
+    },
+    {
+        _id: "26",
+        name: "Trà chanh",
+        image: food_26,
+        print: 18,
+        description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
+        category: "Drink"
+    },
+    {
+        _id: "27",
+        name: "Mỳ xào",
+        image: food_27,
+        print: 17,
+        description: "Tasty rolls filled with shrimp and crunchy vegetables.",
+        category: "Noodles"
+    },
+    {
+        _id: "28",
+        name: "Salad cải tím",
+        image: food_28,
+        print: 17,
+        description: "Tasty rolls filled with shrimp and crunchy vegetables.",
+        category: "Salad"
     }
 ]
