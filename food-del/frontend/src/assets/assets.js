@@ -64,30 +64,37 @@ export const assets ={
 export const menu_list = [
     {
         menu_name: "Salad",
+        menu_name_vi: "Salad",
         menu_image: menu_1
     },
     {
         menu_name: "Meat",
+        menu_name_vi: "Món thịt",
         menu_image: menu_2
     },
     {
         menu_name: "Pizza",
+        menu_name_vi: "Pizza",
         menu_image: menu_3
     },
     {
         menu_name: "Cake",
+        menu_name_vi: "Bánh ngọt",
         menu_image: menu_4
     },
     {
         menu_name: "Noodles",
+        menu_name_vi: "Mì",
         menu_image: menu_5
     },
     {
         menu_name: "Drink",
+        menu_name_vi: "Đồ uống",
         menu_image: menu_6
     },
     {
         menu_name: "Soup",
+        menu_name_vi: "Súp",
         menu_image: menu_7
     }
 

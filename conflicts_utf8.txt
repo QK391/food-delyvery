@@ -1,0 +1,5 @@
+﻿food-del/frontend/src/components/FoodDisplay/FoodDisplay.jsx
+food-del/frontend/src/components/Navbar/Navbar.jsx
+food-del/frontend/src/pages/Home/Home.jsx
+food-del/frontend/src/pages/MyOrders/MyOrders.jsx
+food-del/frontend/src/pages/PlaceOrder/PlaceOrder.jsx

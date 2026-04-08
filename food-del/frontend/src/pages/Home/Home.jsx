@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from "react";
+import React, { useMemo, useState } from "react";
 import "./Home.css"
 import Header from "../../components/Header/Header";
 import ExploreMenu from "../../components/ExploreMenu/ExploreMenu";
@@ -9,7 +9,10 @@ import { useSearchParams } from "react-router-dom";
 const Home = () => {
     const [category, setCategory] = useState("All");
     const [searchParams] = useSearchParams();
-    const searchQuery = useMemo(() => (searchParams.get("search") || "").trim(), [searchParams]);
+    const searchQuery = useMemo(
+        () => (searchParams.get("search") || "").trim(),
+        [searchParams]
+    );
     return (
         <div>
             <Header/>

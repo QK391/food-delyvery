@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { assets } from "../../assets/assets";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -11,56 +11,49 @@ const Navbar = ({setShowLogin}) => {
     const {getTotalCartAmount,token,setToken} = React.useContext(StoreContext);
     const navigate = useNavigate();
     const location = useLocation();
-
-    useEffect(() => {
-        const params = new URLSearchParams(location.search);
-        setSearchQuery(params.get("search") || "");
-    }, [location.search]);
     const logout = ()=>{
         localStorage.removeItem("token");
         setToken("");
         navigate("/")
     }
 
-    const handleSearch = () => {
-        const trimmedQuery = searchQuery.trim();
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        setSearchQuery(params.get("search") || "");
+    }, [location.search]);
+
+    const handleSearch = (queryValue = searchQuery) => {
+        const trimmedQuery = queryValue.trim();
         if (!trimmedQuery) {
             navigate("/", { replace: true });
             return;
         }
-        navigate(`/?search=${encodeURIComponent(trimmedQuery)}`, {
-            replace: true,
-        });
+        navigate(`/?search=${encodeURIComponent(trimmedQuery)}`, { replace: true });
     };
 
-    const onSearchInputChange = (e) => {
-        const v = e.target.value;
-        setSearchQuery(v);
-        const t = v.trim();
-        if (t) {
-            navigate(`/?search=${encodeURIComponent(t)}`, { replace: true });
-        } else {
-            navigate("/", { replace: true });
-        }
+    const handleSearchInputChange = (e) => {
+        const value = e.target.value;
+        setSearchQuery(value);
+        handleSearch(value);
     };
 
     return ( 
         <div className="navbar">
            <Link to="/" onClick={() => { setMenu("home"); window.scrollTo(0, 0); }}><img src={assets.logo} alt="Logo" className="logo" /></Link>
             <ul className="navbar-menu">
-                <Link to="/" onClick={()=> setMenu("home")} className={menu === "home" ? "active" : ""}>Home</Link>
-                <a href="#explore-menu" onClick={()=> setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</a>
-                <a href="#app-download" onClick={()=> setMenu("mobile-app")} className={menu === "mobile-app" ? "active" : ""}>Mobile-app</a> 
-                <a href="#footer" onClick={()=> setMenu("contact us")} className={menu === "contact us" ? "active" : ""}>Contact us</a>
+                <Link to="/" onClick={()=> setMenu("home")} className={menu === "home" ? "active" : ""}>Trang chủ</Link>
+                <a href="#explore-menu" onClick={()=> setMenu("menu")} className={menu === "menu" ? "active" : ""}>Thực đơn</a>
+                <a href="#app-download" onClick={()=> setMenu("mobile-app")} className={menu === "mobile-app" ? "active" : ""}>Ứng dụng</a> 
+                <a href="#footer" onClick={()=> setMenu("contact us")} className={menu === "contact us" ? "active" : ""}>Liên hệ</a>
             </ul>
             <div className="navbar-right">
                 <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                     {showSearch && (
                         <input 
                             type="text" 
-                            placeholder="Search..." 
+                            placeholder="Tìm kiếm..." 
                             value={searchQuery}
-                            onChange={onSearchInputChange}
+                            onChange={handleSearchInputChange}
                             onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
                             style={{ padding: "5px 10px", borderRadius: "20px", border: "1px solid #ccc", outline: "none" }} 
                         />
@@ -71,13 +64,13 @@ const Navbar = ({setShowLogin}) => {
                     <Link to='/cart'><img src={assets.cartIcon} alt="" style={{height: 25}}/></Link>
                     <div className={getTotalCartAmount()===0?"":"dot"}></div>
                 </div>
-                {!token?<button onClick={()=>setShowLogin(true)}>Sign in</button>:
+                {!token?<button onClick={()=>setShowLogin(true)}>Đăng nhập</button>:
                 <div className="navbar-profile">
                     <img src={assets.user_icon} alt=""/>
                     <ul className="nav-profile-dropdown">
-                        <li onClick={()=>navigate("/myorders")}><img src={assets.bag_icon} alt="" />Orders</li>
+                        <li onClick={()=>navigate("/myorders")}><img src={assets.bag_icon} alt="" />Đơn hàng</li>
                         <hr/>
-                        <li onClick={logout}><img src={assets.logout_icon} alt="" />Logout</li>
+                        <li onClick={logout}><img src={assets.logout_icon} alt="" />Đăng xuất</li>
                     </ul>
                 </div>}
             </div>

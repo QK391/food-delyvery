@@ -17,7 +17,7 @@ const MyOrders = () => {
     }, [token]);
     return (
         <div className="my-orders">
-            <h2>My Orders
+            <h2>Đơn hàng của tôi
                 <div className="container">
                     {data.map((order, index)=>{
                         return (
@@ -32,7 +32,7 @@ const MyOrders = () => {
                                     })}
                                 </p>
                                 <p>${order.amount}.00</p>
-                                <p>Items: {order.items.length}</p>
+                                <p>Số món: {order.items.length}</p>
                                 <div className="my-orders-status-block">
                                     <p><span>&#x25cf;</span><b>{order.status}</b></p>
                                     <p className="my-orders-payment">
@@ -47,7 +47,7 @@ const MyOrders = () => {
                                             : "Chưa thanh toán"}
                                     </p>
                                 </div>
-                                <button onClick={fetchOrders}>Track Order</button>
+                                <button onClick={fetchOrders}>Theo dõi đơn</button>
                             </div>
                         )
                     })}

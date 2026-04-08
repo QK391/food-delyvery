@@ -4,9 +4,9 @@ const Header = () => {
     return (
         <div className="header">
             <div className="header-contents">
-                <h2>Foot Delivery</h2>
-                <p>Ứng dụng giao đồ ăn nhanh chóng và tin cậy.</p>
-                <button>View Menu</button>
+                <h2>Foot Mart</h2>
+                <p>Đưa thực phẩm sạch từ nông trại lên bàn ăn của bạn.</p>
+                <button>Xem thực đơn</button>
             </div>
         </div>
     )
