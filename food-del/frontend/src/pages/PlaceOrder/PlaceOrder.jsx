@@ -128,23 +128,22 @@ export const PlaceOrder = () => {
                     <div>
                         <div className="cart-total-details">
                             <p>Thành tiền</p>
-                            <p>{getTotalCartAmount()}VND</p>
+                            <p>{getTotalCartAmount()}.000 VND</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
                             <p>Phí giao hàng</p>
-                            <p>{getTotalCartAmount() === 0 ? 0 : 2} VND</p>
+                            <p>{getTotalCartAmount() === 0 ? 0 : 2.000} VND</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
                             <b>Tổng</b>
-                            <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}VND</b>
+                            <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}.000 VND</b>
                         </div>
                     </div>
                     <button type="submit">Thanh toán</button>
                 </div>
             </div>
-
         </form>
     )
 };
