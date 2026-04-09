@@ -14,7 +14,7 @@ import logout_icon from './log-out_icon.png';
 import user_icon from './user_icon.png';
 import exit_icon from './exit_icon.png';
 import box_icon from './box_icon.png';
-import menu_1 from './sl_03.jpg';
+import menu_1 from './sl_06.jpg';
 import menu_2 from './meat_03.png';
 import menu_3 from './pz_05.png';
 import menu_4 from './cake_04.png';
@@ -31,7 +31,7 @@ import food_8 from './sl_03.jpg';
 import food_9 from './meat_01.jpg';
 import food_10 from './dr_07.jpg';
 import food_11 from './pz_04.jpg';
-import food_12 from './soup_02.png';
+import food_12 from './soup_02.jpg';
 import food_13 from './cake_06.jpg';
 import food_14 from './img_01.jpg';
 import food_15 from './cake_05.jpg';
@@ -76,7 +76,7 @@ export const menu_list = [
     },
     {
         menu_name: "Meat",
-        menu_name_vi: "Món thịt",
+        menu_name_vi: "Thịt rán",
         menu_image: menu_2
     },
     {
@@ -86,7 +86,7 @@ export const menu_list = [
     },
     {
         menu_name: "Cake",
-        menu_name_vi: "Bánh ngọt",
+        menu_name_vi: "Bánh",
         menu_image: menu_4
     },
     {
@@ -150,7 +150,7 @@ export const food_list = [
     },
     {
         _id: "7",
-        name: "Mì xào",
+        name: "Mì xào hải sản",
         image: food_7,
         price: "55.000",
         description: "A colorful mix of pasta, vegetables, and Italian dressing.",
@@ -174,7 +174,7 @@ export const food_list = [
     },
     {
         _id: "10",
-        name: "Mango drink",
+        name: "Nước chanh leo",
         image: food_10,
         price: "35.000",
         description: "Delicious rolls stuffed with seasoned chicken and vegetables.",
@@ -182,7 +182,7 @@ export const food_list = [
     },
     {
         _id: "11",
-        name: "Veggie Pizza",
+        name: "Pizza nấm",
         image: food_11,
         price: "70.000",
         description: "Fresh vegetable rolls served with a sweet chili sauce.",
@@ -190,7 +190,7 @@ export const food_list = [
     },
     {
         _id: "12",
-        name: "Shrimp Soup",
+        name: "Khoai tây hầm",
         image: food_12,
         price: "60.000",
         description: "Tasty rolls filled with shrimp and crunchy vegetables.",
@@ -206,7 +206,7 @@ export const food_list = [
     },
     {
         _id: "14",
-        name: "Beef Soup",
+        name: "Canh sủi cảo",
         image: food_14,
         price: "60.000",
         description: "Juicy beef rolls with a blend of spices and served with a side of dipping sauce.",
@@ -214,7 +214,7 @@ export const food_list = [
     },
     {
         _id: "15",
-        name: "Bánh mì pate",
+        name: "Bánh sanwich",
         image: food_15,
         price: "45.000",
         description: "Healthy tofu rolls with fresh vegetables and a tangy dipping sauce.",
@@ -238,7 +238,7 @@ export const food_list = [
     },
     {
         _id: "18",
-        name: "Mỳ xoắn",
+        name: "Mỳ xào chua cay",
         image: food_18,
         price: "35.000",
         description: "Juicy beef rolls with a blend of spices and served with a side of dipping sauce.",
@@ -262,7 +262,7 @@ export const food_list = [
     },
     {
         _id: "21",
-        name: "Drink",
+        name: "Trà dâu",
         image: food_21,
         price: "45.000",
         description: "Fresh vegetable rolls served with a sweet chili sauce.",
@@ -270,7 +270,7 @@ export const food_list = [
     },
     {
         _id: "22",
-        name: "Soup",
+        name: "Khoai tây hầm súc xích",
         image: food_22,
         price: "60.000",
         description: "Tasty rolls filled with shrimp and crunchy vegetables.",
@@ -278,7 +278,7 @@ export const food_list = [
     },
     {
         _id: "23",
-        name: "Bánh kem",
+        name: "Bánh mì pate",
         image: food_23,
         price: "60.000",
         description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
@@ -286,7 +286,7 @@ export const food_list = [
     },
     {
         _id: "24",
-        name: "Bánh kem",
+        name: "Bánh mì nướng bơ",
         image: food_24,
         price: "35.000",
         description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
@@ -310,7 +310,7 @@ export const food_list = [
     },
     {
         _id: "27",
-        name: "Mỳ xào",
+        name: "Mỳ xào thập cẩm",
         image: food_27,
         price: "35.000",
         description: "Tasty rolls filled with shrimp and crunchy vegetables.",
@@ -326,7 +326,7 @@ export const food_list = [
     },
     {
         _id: "29",
-        name: "Thịt nướng",
+        name: "Đùi gà nướng",
         image: food_29,
         price: "35.000",
         description: "Tasty rolls filled with shrimp and crunchy vegetables.",
