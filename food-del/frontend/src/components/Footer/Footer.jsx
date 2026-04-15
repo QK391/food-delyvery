@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="footer-content">
                 <div className="footer-content-left">
                     <img src={assets.logo} alt="" />
-                    <p>© 2026 FoodMart. Mọi quyền được bảo lưu.</p>
+                    <p>© 2026 FoodMart.</p>
                 </div>
                 <div className="footer-social-icons">
                     <img src={assets.facebook_icon} alt="" />
@@ -28,7 +28,7 @@ const Footer = () => {
                 <div className="footer-content-right">
                     <h2>LIÊN HỆ</h2>
                     <ul>
-                        <li>1234567890</li>
+                        <li>0866062568</li>
                         <li>contact@foodmart.com</li>
                     </ul>
                 </div>

@@ -45,6 +45,8 @@ export const PlaceOrder = () => {
             setCartItems({});
             if (paymentMethod === "e_wallet") {
                 navigate(`/vnpay-mock?orderId=${response.data.orderId}`);
+            } else if (paymentMethod === "cash") {
+                navigate("/myorders", { state: { codSuccess: true } });
             } else {
                 navigate("/myorders");
             }
@@ -133,12 +135,12 @@ export const PlaceOrder = () => {
                         <hr />
                         <div className="cart-total-details">
                             <p>Phí giao hàng</p>
-                            <p>{getTotalCartAmount() === 0 ? 0 : 2.000} VND</p>
+                            <p>{getTotalCartAmount() === 0 ? 0 : "20.000"} VND</p>
                         </div>
                         <hr />
                         <div className="cart-total-details">
                             <b>Tổng</b>
-                            <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}.000 VND</b>
+                            <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 20}.000 VND</b>
                         </div>
                     </div>
                     <button type="submit">Thanh toán</button>

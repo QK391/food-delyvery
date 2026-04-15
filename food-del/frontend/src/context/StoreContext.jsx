@@ -52,15 +52,26 @@ const StoreContextProvider = (props) => {
         }
     };
     const loadCarData = async (token) => {
-        const response = await axios.get(url + "/api/cart/get", {
-            headers: { token },
-        });
-        const raw = response.data?.cartData;
-        setCartItems(
-            raw != null && typeof raw === "object" && !Array.isArray(raw)
-                ? { ...raw }
-                : {}
-        );
+        try {
+            const response = await axios.get(url + "/api/cart/get", {
+                headers: { token },
+            });
+            if (response.data?.success === false) {
+                // Token không hợp lệ hoặc hết hạn → clear
+                localStorage.removeItem("token");
+                setToken("");
+                setCartItems({});
+                return;
+            }
+            const raw = response.data?.cartData;
+            setCartItems(
+                raw != null && typeof raw === "object" && !Array.isArray(raw)
+                    ? { ...raw }
+                    : {}
+            );
+        } catch (e) {
+            console.error(e);
+        }
     };
     useEffect(()=>{
         async function loadData(){

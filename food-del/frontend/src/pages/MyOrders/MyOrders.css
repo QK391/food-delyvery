@@ -38,6 +38,40 @@
     color: #ccc;
     margin: 0;
 }
+.my-orders-cod-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #1a3a1a;
+    border: 1px solid #4caf50;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    color: #c8e6c9;
+}
+.my-orders-cod-banner span {
+    font-size: 24px;
+    line-height: 1;
+}
+.my-orders-cod-banner strong {
+    display: block;
+    color: #4caf50;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+.my-orders-cod-banner p {
+    margin: 0;
+    font-size: 13px;
+    color: #a5d6a7;
+}
+
+    color: #4caf50;
+    font-weight: 600;
+}
+.my-orders-payment .unpaid {
+    color: #ff9800;
+    font-weight: 600;
+}
 .my-orders-order button{
     border: none;
     padding: 12px 0px;
@@ -46,7 +80,7 @@
     cursor: pointer;
     color: dimgray;
 }
-@media (max-wwidth:900px) {
+@media (max-width:900px) {
     .my-orders-order{
         grid-template-columns: 1fr 2fr 1fr;
         row-gap: 5px;
