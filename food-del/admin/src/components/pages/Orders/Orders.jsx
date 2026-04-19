@@ -18,7 +18,7 @@ const Orders = ({ url }) => {
         }
     }
     const statusHandler = async (event, orderId) => {
-        const response = await axios.post(url + "/api/oder/status",
+        const response = await axios.post(url + "/api/order/status",
             {
                 orderId,
                 status: event.target.value
@@ -39,7 +39,7 @@ const Orders = ({ url }) => {
                         <img src={assets.order_icon} alt="" />
                         <div>
                             <p className="order-item-food">
-                                {order.name.map((item, index) => {
+                                {order.items.map((item, index) => {
                                     if (index === order.items.length - 1) {
                                         return item.name + " x " + item.quantity
                                     } else {
@@ -70,6 +70,7 @@ const Orders = ({ url }) => {
                             <option value="Food Processing">Food Processing</option>
                             <option value="Out for Delivery">Out for Delivery</option>
                             <option value="Delivered">Delivered</option>
+                            <option value="Cancelled">Cancelled</option>
                         </select>
                     </div>
                 ))}

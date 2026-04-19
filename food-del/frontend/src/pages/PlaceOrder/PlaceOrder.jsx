@@ -42,12 +42,21 @@ export const PlaceOrder = () => {
         };
         let response = await axios.post(url + "/api/order/place", orderData, { headers: { token } });
         if (response.data.success) {
-            setCartItems({});
+            const orderId = response.data.orderId;
             if (paymentMethod === "e_wallet") {
-                navigate(`/vnpay-mock?orderId=${response.data.orderId}`);
+                // Gọi backend tạo URL VNPay thật
+                const vnpRes = await axios.post(url + "/api/order/vnpay-create", { orderId }, { headers: { token } });
+                if (vnpRes.data.success) {
+                    setCartItems({});
+                    window.location.href = vnpRes.data.payUrl; // redirect sang VNPay
+                } else {
+                    alert("Không thể tạo liên kết thanh toán VNPay");
+                }
             } else if (paymentMethod === "cash") {
+                setCartItems({});
                 navigate("/myorders", { state: { codSuccess: true } });
             } else {
+                setCartItems({});
                 navigate("/myorders");
             }
         } else {
@@ -120,7 +129,7 @@ export const PlaceOrder = () => {
                 )}
                 {paymentMethod === "e_wallet" && (
                     <p className="place-order-payment-hint">
-                        Đơn hàng được ghi nhận như đã thanh toán qua ví điện tử (demo — chưa kết nối cổng thanh toán thật).
+                        Bạn sẽ được chuyển đến cổng thanh toán VNPay để hoàn tất giao dịch.
                     </p>
                 )}
             </div>

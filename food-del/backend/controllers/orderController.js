@@ -1,5 +1,6 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
+import { createVnpayUrl, verifyVnpayReturn } from "../utils/vnpay.js";
 
 const placeOrder = async (req, res) => {
   try {
@@ -17,7 +18,12 @@ const placeOrder = async (req, res) => {
       payment: paid,
     });
     await newOrder.save();
-    await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
+
+    // Chỉ xoá cart ngay nếu không phải e_wallet (e_wallet chờ VNPay callback)
+    if (paymentMethod !== "e_wallet") {
+      await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
+    }
+
     res.json({ success: true, orderId: newOrder._id });
   } catch (error) {
     console.log(error);
@@ -73,4 +79,70 @@ const verifyOrder = async (req, res) => {
   }
 };
 
-export { placeOrder, userOrders, listOrders, updateOrderStatus, verifyOrder };
+/**
+ * Tạo URL thanh toán VNPay và trả về cho frontend redirect
+ */
+const createVnpayPayment = async (req, res) => {
+  try {
+    const { orderId } = req.body;
+    const order = await orderModel.findById(orderId);
+    if (!order) {
+      return res.json({ success: false, message: "Order not found" });
+    }
+
+    const ipAddr =
+      req.headers["x-forwarded-for"]?.split(",")[0].trim() ||
+      req.socket?.remoteAddress ||
+      "127.0.0.1";
+
+    const returnUrl = `${process.env.BACKEND_URL || "http://localhost:3050"}/api/order/vnpay-return`;
+
+    const payUrl = createVnpayUrl({
+      orderId: order._id.toString(),
+      amount: order.amount,
+      orderInfo: `Thanh toan don hang ${order._id}`,
+      ipAddr,
+      returnUrl,
+    });
+
+    res.json({ success: true, payUrl });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Error creating VNPay payment" });
+  }
+};
+
+/**
+ * VNPay callback sau khi thanh toán (GET redirect)
+ */
+const vnpayReturn = async (req, res) => {
+  const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+  try {
+    const isValid = verifyVnpayReturn(req.query);
+    const responseCode = req.query["vnp_ResponseCode"];
+    const orderId = req.query["vnp_TxnRef"];
+
+    if (isValid && responseCode === "00") {
+      // Thanh toán thành công: đánh dấu đã TT và xoá cart
+      const order = await orderModel.findByIdAndUpdate(
+        orderId,
+        { payment: true },
+        { new: true }
+      );
+      if (order) {
+        await userModel.findByIdAndUpdate(order.userId, { cartData: {} });
+      }
+      return res.redirect(`${frontendUrl}/myorders?vnpay=success`);
+    } else {
+      // Huỷ hoặc thất bại: đổi status thành Cancelled, KHÔNG xoá đơn
+      await orderModel.findByIdAndUpdate(orderId, { status: "Cancelled" });
+      return res.redirect(`${frontendUrl}/myorders?vnpay=cancel`);
+    }
+  } catch (error) {
+    console.log(error);
+    res.redirect(`${frontendUrl}/myorders?vnpay=error`);
+  }
+};
+
+export { placeOrder, userOrders, listOrders, updateOrderStatus, verifyOrder, createVnpayPayment, vnpayReturn };
+
