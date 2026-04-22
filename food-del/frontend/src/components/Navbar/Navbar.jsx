@@ -8,12 +8,13 @@ const Navbar = ({setShowLogin}) => {
     const [menu, setMenu] = useState("home");
     const [showSearch, setShowSearch] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
-    const {getTotalCartAmount,token,setToken} = React.useContext(StoreContext);
+    const {getTotalCartAmount,token,setToken,setUserProfile} = React.useContext(StoreContext);
     const navigate = useNavigate();
     const location = useLocation();
     const logout = ()=>{
         localStorage.removeItem("token");
         setToken("");
+        setUserProfile(null);
         navigate("/")
     }
 
@@ -68,6 +69,8 @@ const Navbar = ({setShowLogin}) => {
                 <div className="navbar-profile">
                     <img src={assets.user_icon} alt=""/>
                     <ul className="nav-profile-dropdown">
+                        <li onClick={()=>navigate("/profile")}><img src={assets.user_icon} alt="" />Trang cá nhân</li>
+                        <hr/>
                         <li onClick={()=>navigate("/myorders")}><img src={assets.bag_icon} alt="" />Đơn hàng</li>
                         <hr/>
                         <li onClick={logout}><img src={assets.logout_icon} alt="" />Đăng xuất</li>

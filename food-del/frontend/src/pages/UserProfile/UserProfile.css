@@ -1,0 +1,122 @@
+.user-profile {
+  max-width: 600px;
+  margin: 60px auto 80px;
+  padding: 0 16px;
+}
+
+.user-profile-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #333;
+}
+
+/* ─── Section card ─────────────────────────────────────────────────────── */
+.profile-section {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  padding: 28px 28px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.profile-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* ─── Fields ───────────────────────────────────────────────────────────── */
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+  width: 100%;
+}
+
+.profile-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.profile-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.profile-field input:focus {
+  border-color: tomato;
+}
+
+.profile-fields-row {
+  display: flex;
+  gap: 12px;
+}
+
+.profile-fields-row .profile-field {
+  flex: 1;
+}
+
+/* ─── Button ───────────────────────────────────────────────────────────── */
+.profile-btn {
+  margin-top: 6px;
+  padding: 10px 24px;
+  background-color: tomato;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+.profile-btn:hover:not(:disabled) {
+  background-color: #e03a1e;
+}
+
+.profile-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ─── Messages ─────────────────────────────────────────────────────────── */
+.profile-msg {
+  font-size: 13px;
+  margin: 8px 0 6px;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.profile-msg--success {
+  color: #1a7a3c;
+  background-color: #e6f4ec;
+  border: 1px solid #b2dfca;
+}
+
+.profile-msg--error {
+  color: #c0392b;
+  background-color: #fdecea;
+  border: 1px solid #f5c6c2;
+}
+
+/* ─── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .profile-section {
+    padding: 20px 16px;
+  }
+
+  .profile-fields-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

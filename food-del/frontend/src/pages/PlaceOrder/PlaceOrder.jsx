@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const PlaceOrder = () => {
-    const { getTotalCartAmount, token, food_list, cartItems, setCartItems, url } = useContext(StoreContext)
+    const { getTotalCartAmount, token, food_list, cartItems, setCartItems, url, userProfile } = useContext(StoreContext)
     const [data, setData] = React.useState({
         firstName: "",
         lastName: "",
@@ -24,6 +24,19 @@ export const PlaceOrder = () => {
         setData((data) => ({ ...data, [name]: value }))
     }
     const navigate = useNavigate();
+    useEffect(() => {
+        if (userProfile?.defaultAddress) {
+            const addr = userProfile.defaultAddress;
+            setData(prev => ({
+                ...prev,
+                street: addr.street || prev.street,
+                city: addr.city || prev.city,
+                state: addr.state || prev.state,
+                zipCode: addr.zipcode || prev.zipCode,
+                country: addr.country || prev.country,
+            }));
+        }
+    }, [userProfile]);
     const placeOrder = async (event) => {
         event.preventDefault();
         let orderItems = [];

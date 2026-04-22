@@ -57,12 +57,12 @@ const LoginPopup = ({ setShowLogin }) => {
                     <input name="email"
                         onChange={onChangeHandler}
                         value={data.email} type="email"
-                        placeholder="Email của bạn" required
+                        placeholder="Email" required
                     />
                     <input name="password"
                         onChange={onChangeHandler}
                         value={data.password} type="password"
-                        placeholder="Mật khẩu của bạn" required
+                        placeholder="Mật khẩu" required
                     />
                 </div>
                 <button type="submit">{currState === "Đăng ký" ? "Tạo tài khoản" : "Đăng nhập"}</button>

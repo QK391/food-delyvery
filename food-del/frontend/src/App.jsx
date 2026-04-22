@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer";
 import LoginPopup from "./components/LoginPopup/LoginPopup";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import VnpayMock from "./pages/VnpayMock/VnpayMock";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
 const App = () => {
   const [showLogin, setShowLogin] = React.useState(false);
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/order" element={<PlaceOrder/>} />
         <Route path="/myorders" element={<MyOrders/>} />
         <Route path="/vnpay-mock" element={<VnpayMock/>} />
+        <Route path="/profile" element={<UserProfile/>} />
       </Routes>
     </div>
     <Footer />
