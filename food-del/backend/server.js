@@ -6,6 +6,9 @@ import foodRouter from "./routes/foodRoute.js";
 import userRouter from "./routes/userRoute.js";
 import cartRouter from "./routes/cartRoute.js";
 import orderRouter from "./routes/orderRoute.js";
+import ratingRouter from "./routes/ratingRoute.js";
+import couponRouter from "./routes/couponRoute.js";
+import categoryRouter from "./routes/categoryRoute.js";
 
 //app config
 const app = express()
@@ -24,6 +27,9 @@ app.use("/images", express.static('uploads'))
 app.use("/api/user", userRouter)
 app.use("/api/cart", cartRouter)
 app.use("/api/order", orderRouter)
+app.use("/api/rating", ratingRouter)
+app.use("/api/coupon", couponRouter)
+app.use("/api/category", categoryRouter)
 
 app.get("/", (req,res)=>{
     res.send("API working")

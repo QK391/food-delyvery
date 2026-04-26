@@ -13,6 +13,7 @@ const orderSchema = new mongoose.Schema({
         enum: ["cash", "bank_card", "e_wallet"],
         default: "cash",
     },
+    couponCode: { type: String, default: null },
 })
 
 const orderModel = mongoose.models.order || mongoose.model("order", orderSchema);

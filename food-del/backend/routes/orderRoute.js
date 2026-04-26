@@ -8,6 +8,7 @@ import {
   verifyOrder,
   createVnpayPayment,
   vnpayReturn,
+  streamOrderUpdates,
 } from "../controllers/orderController.js";
 
 const orderRouter = express.Router();
@@ -18,5 +19,6 @@ orderRouter.post("/status", updateOrderStatus);
 orderRouter.post("/verify", verifyOrder);
 orderRouter.post("/vnpay-create", authMiddleware, createVnpayPayment);
 orderRouter.get("/vnpay-return", vnpayReturn);
+orderRouter.get("/stream/:userId", streamOrderUpdates);
 
 export default orderRouter;

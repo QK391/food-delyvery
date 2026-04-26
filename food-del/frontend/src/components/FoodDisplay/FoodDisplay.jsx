@@ -34,6 +34,8 @@ const FoodDisplay = ({ category, searchQuery = "" }) => {
                         price={item.price}
                         description={item.description}
                         image={item.image}
+                        avgRating={item.avgRating ?? 0}
+                        ratingCount={item.ratingCount ?? 0}
                     />
                 ))}
             </div>

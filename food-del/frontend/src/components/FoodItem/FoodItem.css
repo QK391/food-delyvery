@@ -71,3 +71,18 @@
     padding-right: 45px;
     text-align: center;
 }
+
+.food-item-rating-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.food-item-rating-count {
+    font-size: 12px;
+    color: #888;
+}
+.food-item-no-rating {
+    font-size: 11px;
+    color: #aaa;
+    font-style: italic;
+}

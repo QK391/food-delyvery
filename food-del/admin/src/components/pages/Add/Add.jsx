@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { assets } from "../../../assets/assets";
 import axios from "axios";
 import './Add.css'
@@ -6,17 +6,32 @@ import { toast } from "react-toastify";
 
 const Add = ({ url }) => {
     const [image, setImage] = useState(false);
+    const [categories, setCategories] = useState([]);
     const [data, setData] = useState({
         name: "",
         description: "",
         price: "",
-        category: "Salad"
-    })
+        category: ""
+    });
+
+    useEffect(() => {
+        axios.get(`${url}/api/category/list`).then(res => {
+            if (res.data.success) setCategories(res.data.data);
+        });
+    }, [url]);
+
+    useEffect(() => {
+        if (categories.length > 0 && !data.category) {
+            setData(prev => ({ ...prev, category: categories[0].name }));
+        }
+    }, [categories]);
+
     const onChangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        setData(data => ({ ...data, [name]: value }))
-    }
+        setData(data => ({ ...data, [name]: value }));
+    };
+
     const onSubmitHandler = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -32,7 +47,7 @@ const Add = ({ url }) => {
                 name: "",
                 description: "",
                 price: "",
-                category: "Salad"
+                category: categories[0]?.name || ""
             })
             setImage(false)
             toast.success(response.data.message)
@@ -67,14 +82,13 @@ const Add = ({ url }) => {
                 <div className="add-category-price">
                     <div className="add-category flex-col">
                         <p>Danh mục</p>
-                        <select onChange={onChangeHandler} name="category" id="">
-                            <option value="Salad">Salad</option>
-                            <option value="Món cuốn">Meat</option>
-                            <option value="Món tráng miệng">Pizza</option>
-                            <option value="Sandwich">Cake</option>
-                            <option value="Bánh ngọt">Noodles</option>
-                            <option value="Món rau">Drink</option>
-                            <option value="Súp">Soup</option>
+                        <select onChange={onChangeHandler} name="category" value={data.category}>
+                            {categories.length === 0
+                                ? <option value="">-- Chưa có danh mục, vui lòng thêm tại trang Categories --</option>
+                                : categories.map(cat => (
+                                    <option key={cat._id} value={cat.name}>{cat.nameVi || cat.name}</option>
+                                ))
+                            }
                         </select>
                     </div>
                     <div className="add-price flex-col">
@@ -85,6 +99,7 @@ const Add = ({ url }) => {
                 <button type="submit" className="add-btn">Thêm</button>
             </form>
         </div>
-    )
-}
-export default Add
+    );
+};
+
+export default Add;

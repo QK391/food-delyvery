@@ -1,6 +1,8 @@
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
+import couponModel from "../models/couponModel.js";
 import { createVnpayUrl, verifyVnpayReturn } from "../utils/vnpay.js";
+import { addClient, removeClient, sendToUser } from "../utils/sseManager.js";
 
 const placeOrder = async (req, res) => {
   try {
@@ -16,8 +18,16 @@ const placeOrder = async (req, res) => {
       address: req.body.address,
       paymentMethod,
       payment: paid,
+      couponCode: req.body.couponCode || null,
     });
     await newOrder.save();
+
+    if (req.body.couponCode) {
+      await couponModel.findOneAndUpdate(
+        { code: req.body.couponCode.toUpperCase() },
+        { $inc: { usageCount: 1 } }
+      );
+    }
 
     // Chỉ xoá cart ngay nếu không phải e_wallet (e_wallet chờ VNPay callback)
     if (paymentMethod !== "e_wallet") {
@@ -53,14 +63,46 @@ const listOrders = async (req, res) => {
 
 const updateOrderStatus = async (req, res) => {
   try {
-    await orderModel.findByIdAndUpdate(req.body.orderId, {
-      status: req.body.status,
-    });
+    const order = await orderModel.findByIdAndUpdate(
+      req.body.orderId,
+      { status: req.body.status },
+      { new: true }
+    );
+    if (order) {
+      sendToUser(order.userId.toString(), {
+        type: "order_status_update",
+        orderId: order._id.toString(),
+        status: req.body.status,
+      });
+    }
     res.json({ success: true, message: "Order status updated" });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Error" });
   }
+};
+
+const streamOrderUpdates = async (req, res) => {
+  const userId = req.params.userId;
+
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.flushHeaders();
+
+  res.write(`data: ${JSON.stringify({ type: "connected" })}\n\n`);
+
+  addClient(userId, res);
+
+  const heartbeat = setInterval(() => {
+    try { res.write(`: heartbeat\n\n`); } catch {}
+  }, 30000);
+
+  req.on("close", () => {
+    clearInterval(heartbeat);
+    removeClient(userId, res);
+  });
 };
 
 const verifyOrder = async (req, res) => {
@@ -144,5 +186,5 @@ const vnpayReturn = async (req, res) => {
   }
 };
 
-export { placeOrder, userOrders, listOrders, updateOrderStatus, verifyOrder, createVnpayPayment, vnpayReturn };
+export { placeOrder, userOrders, listOrders, updateOrderStatus, verifyOrder, createVnpayPayment, vnpayReturn, streamOrderUpdates };
 

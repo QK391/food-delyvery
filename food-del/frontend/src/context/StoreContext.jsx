@@ -9,6 +9,8 @@ const StoreContextProvider = (props) => {
     const [token,setToken] = useState("");
     const [userProfile, setUserProfile] = useState(null);
     const [foodlist, setFoodList] = useState(food_list);
+    const [appliedCoupon, setAppliedCoupon] = useState(null);
+    const [categories, setCategories] = useState([]);
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
             setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
@@ -52,6 +54,13 @@ const StoreContextProvider = (props) => {
             console.error(e);
         }
     };
+    const fetchCategories = async () => {
+        try {
+            const res = await axios.get(url + "/api/category/list");
+            if (res.data?.success) setCategories(res.data.data);
+        } catch (e) { console.error(e); }
+    };
+
     const fetchUserProfile = async (tkn) => {
         try {
             const response = await axios.get(url + "/api/user/profile", { headers: { token: tkn } });
@@ -87,6 +96,7 @@ const StoreContextProvider = (props) => {
     useEffect(()=>{
         async function loadData(){
             await fetchFoodList();
+            await fetchCategories();
             if(localStorage.getItem("token")){
                 setToken(localStorage.getItem("token"));
                 await loadCarData(localStorage.getItem("token"));
@@ -109,6 +119,9 @@ const StoreContextProvider = (props) => {
         addToCart,
         removeFromCart,
         getTotalCartAmount,
+        appliedCoupon,
+        setAppliedCoupon,
+        categories,
         
     }
     return (

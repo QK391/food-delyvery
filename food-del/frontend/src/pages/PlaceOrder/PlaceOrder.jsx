@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const PlaceOrder = () => {
-    const { getTotalCartAmount, token, food_list, cartItems, setCartItems, url, userProfile } = useContext(StoreContext)
+    const { getTotalCartAmount, token, food_list, cartItems, setCartItems, url, userProfile, appliedCoupon, setAppliedCoupon } = useContext(StoreContext)
     const [data, setData] = React.useState({
         firstName: "",
         lastName: "",
@@ -50,8 +50,9 @@ export const PlaceOrder = () => {
         let orderData = {
             address: data,
             items: orderItems,
-            amount: getTotalCartAmount() + 2,
+            amount: getTotalCartAmount() + 20 - (appliedCoupon?.discountAmount ?? 0),
             paymentMethod,
+            couponCode: appliedCoupon?.code || null,
         };
         let response = await axios.post(url + "/api/order/place", orderData, { headers: { token } });
         if (response.data.success) {
@@ -61,15 +62,18 @@ export const PlaceOrder = () => {
                 const vnpRes = await axios.post(url + "/api/order/vnpay-create", { orderId }, { headers: { token } });
                 if (vnpRes.data.success) {
                     setCartItems({});
+                    setAppliedCoupon(null);
                     window.location.href = vnpRes.data.payUrl; // redirect sang VNPay
                 } else {
                     alert("Không thể tạo liên kết thanh toán VNPay");
                 }
             } else if (paymentMethod === "cash") {
                 setCartItems({});
+                setAppliedCoupon(null);
                 navigate("/myorders", { state: { codSuccess: true } });
             } else {
                 setCartItems({});
+                setAppliedCoupon(null);
                 navigate("/myorders");
             }
         } else {
@@ -160,9 +164,19 @@ export const PlaceOrder = () => {
                             <p>{getTotalCartAmount() === 0 ? 0 : "20.000"} VND</p>
                         </div>
                         <hr />
+                        {appliedCoupon && (
+                            <>
+                                <hr />
+                                <div className="cart-total-details">
+                                    <p>Giam gia ({appliedCoupon.code})</p>
+                                    <p style={{color: "tomato"}}>-{appliedCoupon.discountAmount}.000 VND</p>
+                                </div>
+                            </>
+                        )}
+                        <hr />
                         <div className="cart-total-details">
                             <b>Tổng</b>
-                            <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 20}.000 VND</b>
+                            <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 20 - (appliedCoupon?.discountAmount ?? 0)}.000 VND</b>
                         </div>
                     </div>
                     <button type="submit">Thanh toán</button>
