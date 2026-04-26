@@ -8,6 +8,8 @@ import Orders from "./components/pages/Orders/Orders";
 import Ratings from "./components/pages/Ratings/Ratings";
 import Coupons from "./components/pages/Coupons/Coupons";
 import Categories from "./components/pages/Categories/Categories";
+import Users from "./components/pages/Users/Users";
+import Dashboard from "./components/pages/Dashboard/Dashboard";
 import { ToastContainer, toast } from 'react-toastify';
 
 const App=()=>{
@@ -20,12 +22,15 @@ const App=()=>{
             <div className="app-content">
                 <Sidebar/>
                 <Routes>
+                    <Route path="/" element={<Dashboard url={url}/>}/>
+                    <Route path="/dashboard" element={<Dashboard url={url}/>}/>
                     <Route path="/add" element={<Add url={url}/>}/>
                     <Route path="/list" element={<List url={url}/>}/>
                     <Route path="/orders" element={<Orders url={url}/>}/>
                     <Route path="/ratings" element={<Ratings url={url}/>}/>
                     <Route path="/coupons" element={<Coupons url={url}/>}/>
                     <Route path="/categories" element={<Categories url={url}/>}/>
+                    <Route path="/users" element={<Users url={url}/>}/>
                 </Routes>
             </div>
         </div>

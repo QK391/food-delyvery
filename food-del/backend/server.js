@@ -9,6 +9,7 @@ import orderRouter from "./routes/orderRoute.js";
 import ratingRouter from "./routes/ratingRoute.js";
 import couponRouter from "./routes/couponRoute.js";
 import categoryRouter from "./routes/categoryRoute.js";
+import statsRouter from "./routes/statsRoute.js";
 
 //app config
 const app = express()
@@ -30,6 +31,7 @@ app.use("/api/order", orderRouter)
 app.use("/api/rating", ratingRouter)
 app.use("/api/coupon", couponRouter)
 app.use("/api/category", categoryRouter)
+app.use("/api/stats", statsRouter)
 
 app.get("/", (req,res)=>{
     res.send("API working")

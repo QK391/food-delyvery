@@ -11,7 +11,8 @@ const userSchema = new mongoose.Schema({
         state:   { type: String, default: "" },
         zipcode: { type: String, default: "" },
         country: { type: String, default: "" },
-    }
+    },
+    isBlocked: { type: Boolean, default: false }
 }, {minimize: false})
 
 const userModel = mongoose.models.user || mongoose.model("use", userSchema);

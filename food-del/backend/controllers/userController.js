@@ -11,6 +11,9 @@ const loginUser = async(req,res) => {
         if(!user){
             return res.json({success:false, message: "User doesn't exist"})
         }
+        if (user.isBlocked) {
+            return res.json({ success: false, message: "Tài khoản của bạn đã bị khóa. Vui lòng liên hệ hỗ trợ." });
+        }
         const isMatch = await bcrypt.compare(password,user.password);
         if(!isMatch){
             return res.json({success:false, message: "Invalid credentails"})
@@ -163,4 +166,39 @@ const updatePassword = async (req, res) => {
     }
 };
 
-export { loginUser, registerUser, getUserProfile, updateUserProfile, updatePassword }
+// list all users (admin)
+const listUsers = async (req, res) => {
+    try {
+        const users = await userModel.find({}).sort({ _id: -1 }).select("-password -cartData");
+        res.json({ success: true, data: users });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Lỗi server" });
+    }
+};
+
+// block user (admin)
+const blockUser = async (req, res) => {
+    const { userId } = req.body;
+    try {
+        await userModel.findByIdAndUpdate(userId, { isBlocked: true });
+        res.json({ success: true, message: "Da khoa tai khoan" });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Lỗi server" });
+    }
+};
+
+// unblock user (admin)
+const unblockUser = async (req, res) => {
+    const { userId } = req.body;
+    try {
+        await userModel.findByIdAndUpdate(userId, { isBlocked: false });
+        res.json({ success: true, message: "Da mo khoa tai khoan" });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Lỗi server" });
+    }
+};
+
+export { loginUser, registerUser, getUserProfile, updateUserProfile, updatePassword, listUsers, blockUser, unblockUser }
