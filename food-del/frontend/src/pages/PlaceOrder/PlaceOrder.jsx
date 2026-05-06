@@ -57,24 +57,21 @@ export const PlaceOrder = () => {
         let response = await axios.post(url + "/api/order/place", orderData, { headers: { token } });
         if (response.data.success) {
             const orderId = response.data.orderId;
-            if (paymentMethod === "e_wallet") {
-                // Gọi backend tạo URL VNPay thật
+            if (paymentMethod === "e_wallet" || paymentMethod === "bank_card") {
+                // Cả thẻ ngân hàng và ví điện tử đều qua VNPay
                 const vnpRes = await axios.post(url + "/api/order/vnpay-create", { orderId }, { headers: { token } });
                 if (vnpRes.data.success) {
                     setCartItems({});
                     setAppliedCoupon(null);
-                    window.location.href = vnpRes.data.payUrl; // redirect sang VNPay
+                    window.location.href = vnpRes.data.payUrl;
                 } else {
                     alert("Không thể tạo liên kết thanh toán VNPay");
                 }
-            } else if (paymentMethod === "cash") {
+            } else {
+                // COD
                 setCartItems({});
                 setAppliedCoupon(null);
                 navigate("/myorders", { state: { codSuccess: true } });
-            } else {
-                setCartItems({});
-                setAppliedCoupon(null);
-                navigate("/myorders");
             }
         } else {
             alert("Có lỗi xảy ra");
@@ -126,7 +123,7 @@ export const PlaceOrder = () => {
                             checked={paymentMethod === "bank_card"}
                             onChange={() => setPaymentMethod("bank_card")}
                         />
-                        <span>Thẻ ngân hàng</span>
+                        <span>Thẻ ngân hàng / ATM (qua VNPay)</span>
                     </label>
                     <label className="place-order-payment-option">
                         <input
@@ -136,15 +133,10 @@ export const PlaceOrder = () => {
                             checked={paymentMethod === "e_wallet"}
                             onChange={() => setPaymentMethod("e_wallet")}
                         />
-                        <span>Ví điện tử VNPay</span>
+                        <span>Ví điện tử (VNPay, Momo...)</span>
                     </label>
                 </div>
-                {paymentMethod === "bank_card" && (
-                    <p className="place-order-payment-hint">
-                        Đơn hàng được ghi nhận như đã thanh toán qua thẻ (demo — chưa kết nối cổng thanh toán thật).
-                    </p>
-                )}
-                {paymentMethod === "e_wallet" && (
+                {(paymentMethod === "bank_card" || paymentMethod === "e_wallet") && (
                     <p className="place-order-payment-hint">
                         Bạn sẽ được chuyển đến cổng thanh toán VNPay để hoàn tất giao dịch.
                     </p>

@@ -9,6 +9,7 @@ import LoginPopup from "./components/LoginPopup/LoginPopup";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import VnpayMock from "./pages/VnpayMock/VnpayMock";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
 const App = () => {
   const [showLogin, setShowLogin] = React.useState(false);
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/myorders" element={<MyOrders/>} />
         <Route path="/vnpay-mock" element={<VnpayMock/>} />
         <Route path="/profile" element={<UserProfile/>} />
+        <Route path="/reset-password" element={<ResetPassword/>} />
       </Routes>
     </div>
     <Footer />

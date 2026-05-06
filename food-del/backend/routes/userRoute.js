@@ -1,5 +1,5 @@
 import express from "express";
-import {loginUser, registerUser, getUserProfile, updateUserProfile, updatePassword, listUsers, blockUser, unblockUser} from "../controllers/userController.js";
+import {loginUser, registerUser, getUserProfile, updateUserProfile, updatePassword, listUsers, blockUser, unblockUser, forgotPassword, resetPassword} from "../controllers/userController.js";
 import authMiddleware from "../middleware/auth.js";
 
 const userRouter = express.Router()
@@ -11,5 +11,7 @@ userRouter.put("/password", authMiddleware, updatePassword)
 userRouter.get("/list", listUsers)
 userRouter.post("/block", blockUser)
 userRouter.post("/unblock", unblockUser)
+userRouter.post("/forgot-password", forgotPassword)
+userRouter.post("/reset-password", resetPassword)
 
 export default userRouter;

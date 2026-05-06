@@ -2,6 +2,8 @@ import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import validator from "validator";
+import crypto from "crypto";
+import { sendResetEmail } from "../utils/sendEmail.js";
 
 //login
 const loginUser = async(req,res) => {
@@ -201,4 +203,57 @@ const unblockUser = async (req, res) => {
     }
 };
 
-export { loginUser, registerUser, getUserProfile, updateUserProfile, updatePassword, listUsers, blockUser, unblockUser }
+// forgot password
+const forgotPassword = async (req, res) => {
+    const { email } = req.body;
+    try {
+        const user = await userModel.findOne({ email });
+        if (!user) {
+            // Don't reveal if email exists — always return success
+            return res.json({ success: true, message: "Nếu email tồn tại, bạn sẽ nhận được hướng dẫn đặt lại mật khẩu." });
+        }
+        const token = crypto.randomBytes(32).toString("hex");
+        const expires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
+        await userModel.findByIdAndUpdate(user._id, {
+            resetPasswordToken: token,
+            resetPasswordExpires: expires,
+        });
+        const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+        const resetUrl = `${frontendUrl}/reset-password?token=${token}`;
+        await sendResetEmail(email, resetUrl);
+        res.json({ success: true, message: "Nếu email tồn tại, bạn sẽ nhận được hướng dẫn đặt lại mật khẩu." });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Lỗi server. Vui lòng thử lại." });
+    }
+};
+
+// reset password
+const resetPassword = async (req, res) => {
+    const { token, newPassword } = req.body;
+    try {
+        const user = await userModel.findOne({
+            resetPasswordToken: token,
+            resetPasswordExpires: { $gt: Date.now() },
+        });
+        if (!user) {
+            return res.json({ success: false, message: "Link đặt lại mật khẩu không hợp lệ hoặc đã hết hạn." });
+        }
+        if (!newPassword || newPassword.length < 8) {
+            return res.json({ success: false, message: "Mật khẩu phải có ít nhất 8 ký tự." });
+        }
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(newPassword, salt);
+        await userModel.findByIdAndUpdate(user._id, {
+            password: hashedPassword,
+            resetPasswordToken: null,
+            resetPasswordExpires: null,
+        });
+        res.json({ success: true, message: "Đặt lại mật khẩu thành công. Bạn có thể đăng nhập ngay." });
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Lỗi server." });
+    }
+};
+
+export { loginUser, registerUser, getUserProfile, updateUserProfile, updatePassword, listUsers, blockUser, unblockUser, forgotPassword, resetPassword }

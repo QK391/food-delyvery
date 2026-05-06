@@ -12,7 +12,9 @@ const userSchema = new mongoose.Schema({
         zipcode: { type: String, default: "" },
         country: { type: String, default: "" },
     },
-    isBlocked: { type: Boolean, default: false }
+    isBlocked: { type: Boolean, default: false },
+    resetPasswordToken: { type: String, default: null },
+    resetPasswordExpires: { type: Date, default: null },
 }, {minimize: false})
 
 const userModel = mongoose.models.user || mongoose.model("use", userSchema);

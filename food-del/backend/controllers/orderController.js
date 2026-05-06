@@ -9,7 +9,6 @@ const placeOrder = async (req, res) => {
     const paymentMethod = ["bank_card", "e_wallet"].includes(req.body.paymentMethod)
       ? req.body.paymentMethod
       : "cash";
-    const paid = paymentMethod === "bank_card";
 
     const newOrder = new orderModel({
       userId: req.body.userId,
@@ -17,7 +16,7 @@ const placeOrder = async (req, res) => {
       amount: req.body.amount,
       address: req.body.address,
       paymentMethod,
-      payment: paid,
+      payment: false, // payment set to true only after VNPay callback
       couponCode: req.body.couponCode || null,
     });
     await newOrder.save();
@@ -29,8 +28,8 @@ const placeOrder = async (req, res) => {
       );
     }
 
-    // Chỉ xoá cart ngay nếu không phải e_wallet (e_wallet chờ VNPay callback)
-    if (paymentMethod !== "e_wallet") {
+    // Chỉ xoá cart ngay nếu COD
+    if (paymentMethod === "cash") {
       await userModel.findByIdAndUpdate(req.body.userId, { cartData: {} });
     }
 
