@@ -21,6 +21,12 @@ hr {
 .app-content {
     display: flex;
 }
+
+@media (max-width: 600px) {
+    .app-content {
+        flex-direction: column;
+    }
+}
 .flex-col {
     display: flex;
     flex-direction: column;

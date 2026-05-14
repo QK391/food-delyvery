@@ -12,3 +12,48 @@
 .navbar .logo {
     width: max(10%, 80px);
 }
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.navbar-change-password {
+    padding: 7px 16px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.navbar-change-password:hover {
+    background-color: #e0e0e0;
+}
+.navbar-logout {
+    padding: 7px 18px;
+    background-color: tomato;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.navbar-logout:hover {
+    opacity: 0.85;
+}
+
+@media (max-width: 600px) {
+    .navbar-change-password span,
+    .navbar-logout span {
+        display: none;
+    }
+    .navbar-change-password,
+    .navbar-logout {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+}

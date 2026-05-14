@@ -1,6 +1,7 @@
 .dashboard {
   padding: 20px 30px;
   flex: 1;
+  min-width: 0;
 }
 
 .dashboard h2 {
@@ -40,7 +41,7 @@
 }
 
 .dashboard-card .value {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   color: #222;
   margin: 0;
@@ -55,6 +56,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   margin-bottom: 24px;
   flex: 1;
+  min-width: 0;
 }
 
 .dashboard-section h3 {
@@ -104,11 +106,47 @@
   background-color: #fafafa;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .dashboard-cards {
     grid-template-columns: repeat(2, 1fr);
   }
   .dashboard-charts-row {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard {
+    padding: 16px;
+  }
+  .dashboard-card .value {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 12px;
+  }
+  .dashboard-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .dashboard-card {
+    padding: 14px;
+  }
+  .dashboard-card h3 {
+    font-size: 11px;
+  }
+  .dashboard-card .value {
+    font-size: 16px;
+  }
+  .dashboard-section {
+    padding: 14px;
+  }
+  .dashboard-top-foods th,
+  .dashboard-top-foods td {
+    padding: 8px 8px;
+    font-size: 12px;
   }
 }

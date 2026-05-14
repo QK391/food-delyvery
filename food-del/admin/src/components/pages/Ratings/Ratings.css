@@ -2,6 +2,7 @@
     display: flex;
     gap: 15px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .ratings-filter select {
@@ -61,6 +62,7 @@
     gap: 15px;
     margin-top: 20px;
     font-size: 13px;
+    flex-wrap: wrap;
 }
 
 .ratings-pagination button {
@@ -83,4 +85,24 @@
 
 .cursor {
     cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .ratings-table-format {
+        grid-template-columns: 1.5fr 1fr 0.8fr 1.5fr 0.8fr 0.4fr;
+        font-size: 12px;
+        padding: 10px;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 600px) {
+    .ratings-table-format.title {
+        display: none;
+    }
+    .ratings-table-format {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 10px;
+    }
 }

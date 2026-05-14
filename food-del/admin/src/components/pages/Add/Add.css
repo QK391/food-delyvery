@@ -1,6 +1,6 @@
 .add {
     width: 70%;
-    margin-left: max(5vw,25px);
+    margin-left: max(5vw, 25px);
     margin-top: 50px;
     color: rgb(7, 7, 7);
     font-size: 16px;
@@ -21,6 +21,7 @@
 .add-category-price {
     display: flex;
     gap: 30px;
+    flex-wrap: wrap;
 }
 .add-category-price select, .add-category-price input {
     max-width: 120px;
@@ -30,4 +31,36 @@
     height: 30px;
     max-width: 150px;
     cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .add {
+        width: 90%;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+    .add-product-name, .add-product-description {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .add {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 16px;
+        margin-top: 24px;
+    }
+    .add-category-price {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .add-category-price select, .add-category-price input {
+        max-width: 100%;
+        width: 100%;
+    }
+    .add-btn {
+        max-width: 100%;
+        width: 100%;
+    }
 }

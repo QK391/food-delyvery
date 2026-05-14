@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { Route, Routes } from "react-router-dom";
@@ -10,14 +10,33 @@ import Coupons from "./components/pages/Coupons/Coupons";
 import Categories from "./components/pages/Categories/Categories";
 import Users from "./components/pages/Users/Users";
 import Dashboard from "./components/pages/Dashboard/Dashboard";
-import { ToastContainer, toast } from 'react-toastify';
+import Login from "./components/Login/Login";
+import { ToastContainer } from 'react-toastify';
 
 const App=()=>{
-    const url = "http://localhost:3050"
+    const url = "http://localhost:3050";
+    const [isLoggedIn, setIsLoggedIn] = useState(
+        () => sessionStorage.getItem("adminLoggedIn") === "true"
+    );
+
+    const handleLogout = () => {
+        sessionStorage.removeItem("adminLoggedIn");
+        setIsLoggedIn(false);
+    };
+
+    if (!isLoggedIn) {
+        return (
+            <>
+                <ToastContainer />
+                <Login url={url} onLogin={() => setIsLoggedIn(true)} />
+            </>
+        );
+    }
+
     return (
         <div>
             <ToastContainer/>
-            <Navbar/>
+            <Navbar onLogout={handleLogout} url={url} />
             <hr/>
             <div className="app-content">
                 <Sidebar/>

@@ -18,7 +18,7 @@
     flex-direction: column;
     gap: 6px;
     flex: 1;
-    min-width: 180px;
+    min-width: 160px;
 }
 
 .categories-field label {
@@ -33,6 +33,7 @@
     border-radius: 4px;
     font-size: 13px;
     outline: none;
+    width: 100%;
 }
 
 .categories-field input[type="file"] {
@@ -53,6 +54,10 @@
     opacity: 0.85;
 }
 
+.categories-table {
+    overflow-x: auto;
+}
+
 .categories-table-format {
     display: grid;
     grid-template-columns: 80px 1.5fr 1.5fr 0.5fr;
@@ -62,6 +67,7 @@
     border: 1px solid #e1e1e1;
     color: black;
     font-size: 13px;
+    min-width: 400px;
 }
 
 .categories-table-format.title {
@@ -97,4 +103,13 @@
 
 .cursor {
     cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .categories-field {
+        min-width: 100%;
+    }
+    .categories-btn {
+        width: 100%;
+    }
 }
