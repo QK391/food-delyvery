@@ -1,7 +1,7 @@
 .header {
     height: 34vw;
     margin: 30px auto;
-    background: url('./banner-1.jpg') no-repeat;
+    background: url('../../assets/banner-02.jpg') no-repeat;
     background-size: contain;
     position: relative;
 }
@@ -13,17 +13,17 @@
     gap: 1.5vw;
     left: 6vw;
     max-width: 50%;
-    bottom: 10%;
+    bottom: 25%;
     animation: fadeIn 3s;
 }
 .header-contents h2{
     font-weight: 500;
-    color: rgb(255, 63, 63);
+    color: rgb(252, 252, 252);
     font-size: max(4.5vw, 22px);
 }
 .header-contents p{
     font-size: 1vw;
-    color: rgb(255, 63, 63);
+    color: rgb(250, 250, 250);
     line-height: 1.5;
 }
 .header-contents button{

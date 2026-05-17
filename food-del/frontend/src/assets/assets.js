@@ -112,7 +112,6 @@ export const food_list = [
         name: "Salad rau mầm hoa edible flower",
         image: food_1,
         price: "50.000",
-        description: "Salad rau mầm hoa edible flower",
         category: "Salad"
     },
     {
@@ -120,7 +119,6 @@ export const food_list = [
         name: "Salad trái cây trộn rau xà lách",
         image: food_2,
         price: "45.000",
-        description: "Fresh vegetables and herbs combined with a tangy dressing.",
         category: "Salad"
     },
     {
@@ -128,7 +126,6 @@ export const food_list = [
         name: "Pizza cà chua phô mai",
         image: food_3,
         price: "70.000",
-        description: "A refreshing mix of seasonal fruits with a hint of mint.",
         category: "Pizza"
     },
 
@@ -137,7 +134,6 @@ export const food_list = [
         name: "hamburger thịt bò kèm",
         image: food_5,
         price: "70.000",
-        description: "Crisp romaine lettuce with Caesar dressing, croutons, and Parmesan cheese.",
         category: "Cake"
     },
     {
@@ -145,7 +141,6 @@ export const food_list = [
         name: "Nước dưa hấu ép",
         image: food_6,
         price: "45.000",
-        description: "A hearty salad with tuna, mixed greens, and a light vinaigrette.",
         category: "Drink"
     },
     {
@@ -153,7 +148,6 @@ export const food_list = [
         name: "Mì xào hải sản",
         image: food_7,
         price: "55.000",
-        description: "A colorful mix of pasta, vegetables, and Italian dressing.",
         category: "Noodles"
     },
     {
@@ -161,7 +155,6 @@ export const food_list = [
         name: "Salad bốn mùa",
         image: food_8,
         price: "45.000",
-        description: "Nutritious quinoa combined with fresh veggies and a lemon dressing.",
         category: "Salad"
     },
     {
@@ -169,7 +162,6 @@ export const food_list = [
         name: "Ức vịt áp chảo",
         image: food_9,
         price: "120.000",
-        description: "Crispy rolls filled with fresh vegetables and served with a tangy dipping sauce.",
         category: "Meat"
     },
     {
@@ -177,7 +169,6 @@ export const food_list = [
         name: "Nước chanh leo",
         image: food_10,
         price: "35.000",
-        description: "Delicious rolls stuffed with seasoned chicken and vegetables.",
         category: "Drink"
     },
     {
@@ -185,7 +176,6 @@ export const food_list = [
         name: "Pizza nấm",
         image: food_11,
         price: "70.000",
-        description: "Fresh vegetable rolls served with a sweet chili sauce.",
         category: "Pizza"
     },
     {
@@ -193,7 +183,6 @@ export const food_list = [
         name: "Khoai tây hầm",
         image: food_12,
         price: "60.000",
-        description: "Tasty rolls filled with shrimp and crunchy vegetables.",
         category: "Soup"
     },
     {
@@ -201,7 +190,6 @@ export const food_list = [
         name: "Bánh pancake",
         image: food_13,
         price: "45.000",
-        description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
         category: "Cake"
     },
     {
@@ -209,7 +197,6 @@ export const food_list = [
         name: "Canh sủi cảo",
         image: food_14,
         price: "60.000",
-        description: "Juicy beef rolls with a blend of spices and served with a side of dipping sauce.",
         category: "Soup"
     },
     {
@@ -217,7 +204,6 @@ export const food_list = [
         name: "Bánh sanwich",
         image: food_15,
         price: "45.000",
-        description: "Healthy tofu rolls with fresh vegetables and a tangy dipping sauce.",
         category: "Cake"
     },
     {
@@ -225,7 +211,6 @@ export const food_list = [
         name: "Sườn nướng",
         image: food_16,
         price: "130.000",
-        description: "Creamy avocado rolls with fresh vegetables and a zesty dressing.",
         category: "Meat"
     },
     {
@@ -233,7 +218,6 @@ export const food_list = [
         name: "Thịt áp chảo",
         image: food_17,
         price: "120.000",
-        description: "Healthy tofu rolls with fresh vegetables and a tangy dipping sauce.",
         category: "Meat"
     },
     {
@@ -241,7 +225,6 @@ export const food_list = [
         name: "Mỳ xào chua cay",
         image: food_18,
         price: "35.000",
-        description: "Juicy beef rolls with a blend of spices and served with a side of dipping sauce.",
         category: "Noodles"
     },
     {
@@ -249,7 +232,6 @@ export const food_list = [
         name: "Pizza ma",
         image: food_19,
         price: "70.000",
-        description: "Juicy beef rolls with a blend of spices and served with a side of dipping sauce.",
         category: "Pizza"
     },
     {
@@ -257,7 +239,6 @@ export const food_list = [
         name: "Mì Ý sốt kem gà nấm",
         image: food_20,
         price: "80.000",
-        description: "Tasty rolls filled with shrimp and crunchy vegetables.",
         category: "Noodles"
     },
     {
@@ -265,7 +246,6 @@ export const food_list = [
         name: "Trà dâu",
         image: food_21,
         price: "45.000",
-        description: "Fresh vegetable rolls served with a sweet chili sauce.",
         category: "Drink"
     },
     {
@@ -273,7 +253,6 @@ export const food_list = [
         name: "Khoai tây hầm súc xích",
         image: food_22,
         price: "60.000",
-        description: "Tasty rolls filled with shrimp and crunchy vegetables.",
         category: "Soup"
     },
     {
@@ -281,7 +260,6 @@ export const food_list = [
         name: "Bánh mì pate",
         image: food_23,
         price: "60.000",
-        description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
         category: "Cake"
     },
     {
@@ -289,7 +267,6 @@ export const food_list = [
         name: "Bánh mì nướng bơ",
         image: food_24,
         price: "35.000",
-        description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
         category: "Cake"
     },
     {
@@ -297,7 +274,6 @@ export const food_list = [
         name: "Trà mật ong",
         image: food_25,
         price: "35.000",
-        description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
         category: "Drink"
     },
     {
@@ -305,7 +281,6 @@ export const food_list = [
         name: "Trà chanh",
         image: food_26,
         price: "35.000",
-        description: "Delicious rolls filled with melted cheese and served with a side of dipping sauce.",
         category: "Drink"
     },
     {
@@ -313,7 +288,6 @@ export const food_list = [
         name: "Mỳ xào thập cẩm",
         image: food_27,
         price: "35.000",
-        description: "Tasty rolls filled with shrimp and crunchy vegetables.",
         category: "Noodles"
     },
     {
@@ -321,7 +295,6 @@ export const food_list = [
         name: "Salad cải tím",
         image: food_28,
         price: "35.000",
-        description: "Tasty rolls filled with shrimp and crunchy vegetables.",
         category: "Salad"
     },
     {
@@ -329,7 +302,6 @@ export const food_list = [
         name: "Đùi gà nướng",
         image: food_29,
         price: "35.000",
-        description: "Tasty rolls filled with shrimp and crunchy vegetables.",
         category: "Meat"
     }
 ]

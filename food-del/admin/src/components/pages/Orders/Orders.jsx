@@ -32,7 +32,7 @@ const Orders = ({ url }) => {
     }, [])
     return (
         <div className="order add">
-            <h3>Order Page</h3>
+            <h3>Các đơn hàng</h3>
             <div className="order-list">
                 {orders.map((order, index) => (
                     <div key={index} className="order-item">
@@ -67,10 +67,10 @@ const Orders = ({ url }) => {
                         </p>
                         <p>{order.amount}VND</p>
                         <select onChange={(event) => statusHandler(event, order._id)} value={order.status}>
-                            <option value="Food Processing">Food Processing</option>
-                            <option value="Out for Delivery">Out for Delivery</option>
-                            <option value="Delivered">Delivered</option>
-                            <option value="Cancelled">Cancelled</option>
+                            <option value="Food Processing">Đang chế biến</option>
+                            <option value="Out for Delivery">Đang giao hàng</option>
+                            <option value="Delivered">Đã giao hàng</option>
+                            <option value="Cancelled">Đã hủy</option>
                         </select>
                     </div>
                 ))}

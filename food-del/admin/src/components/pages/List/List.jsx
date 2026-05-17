@@ -32,11 +32,11 @@ const List = ({ url }) => {
             <p>All food list</p>
             <div className="list-table">
                 <div className="list-table-format title">
-                    <b>Image</b>
-                    <b>Name</b>
-                    <b>Category</b>
-                    <b>Price</b>
-                    <b>Action</b>
+                    <b>Ảnh</b>
+                    <b>Tên món</b>
+                    <b>Loại</b>
+                    <b>Giá</b>
+                    <b>Hoạt động</b>
                 </div>
                 {list.map((item, index) => {
                     return (

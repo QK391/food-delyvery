@@ -8,35 +8,35 @@ const Sidebar = () => {
             <div className="sidebar-options">
                 <NavLink to="/dashboard" className="sidebar-option">
                     <img src={assets.order_icon} alt="" />
-                    <p>Dashboard</p>
+                    <p>Tổng quan</p>
                 </NavLink>
                 <NavLink to="/add" className="sidebar-option">
                     <img src={assets.add_icon} alt="" />
-                    <p>Add Items</p>
+                    <p>Thêm món ăn</p>
                 </NavLink>
                  <NavLink to="/list" className="sidebar-option">
                     <img src={assets.order_icon} alt="" />
-                    <p>List Items</p>
+                    <p>Danh sách món ăn</p>
                 </NavLink>
                  <NavLink to="/orders" className="sidebar-option">
                     <img src={assets.order_icon} alt="" />
-                    <p>Orders</p>
+                    <p>Đơn hàng</p>
                 </NavLink>
                  <NavLink to="/ratings" className="sidebar-option">
                     <img src={assets.order_icon} alt="" />
-                    <p>Ratings</p>
+                    <p>Đánh giá</p>
                 </NavLink>
                  <NavLink to="/coupons" className="sidebar-option">
                     <img src={assets.order_icon} alt="" />
-                    <p>Coupons</p>
+                    <p>Mã giảm giá</p>
                 </NavLink>
                  <NavLink to="/categories" className="sidebar-option">
                     <img src={assets.order_icon} alt="" />
-                    <p>Categories</p>
+                    <p>Thể loại</p>
                 </NavLink>
                  <NavLink to="/users" className="sidebar-option">
                     <img src={assets.order_icon} alt="" />
-                    <p>Users</p>
+                    <p>Người dùng</p>
                 </NavLink>
             </div>
         </div>
