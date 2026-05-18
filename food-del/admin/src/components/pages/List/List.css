@@ -17,6 +17,48 @@
 .list-table-format img {
     width: 50px;
 }
+.list-action {
+    display: flex;
+    align-items: center;
+}
+.list-btn-delete {
+    padding: 6px 14px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.list-btn-delete:hover {
+    opacity: 0.82;
+}
+.list-confirm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #333;
+}
+.list-btn-confirm {
+    padding: 5px 12px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.list-btn-cancel {
+    padding: 5px 12px;
+    background-color: #aaa;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
 @media (max-width:600px) {
     .list-table-format{
         grid-template-columns: 1fr 3fr 1fr;

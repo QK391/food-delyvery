@@ -65,7 +65,7 @@ const Orders = ({ url }) => {
                                     : "COD"}
                             {order.payment ? " · Đã TT" : " · Chưa TT"}
                         </p>
-                        <p>{order.amount}VND</p>
+                        <p>{(order.amount * 1000).toLocaleString("vi-VN")} VND</p>
                         <select onChange={(event) => statusHandler(event, order._id)} value={order.status}>
                             <option value="Food Processing">Đang chế biến</option>
                             <option value="Out for Delivery">Đang giao hàng</option>
